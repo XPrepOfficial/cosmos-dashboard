@@ -1,0 +1,10 @@
+.dashboard-container {
+  padding: 24px 24px 0px;
+  background: var(--color-light-grey);
+}
+
+.dashboard-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}

@@ -1,7 +1,11 @@
+import Header from "./Components/Header";
+import Dashbaord from "./Screens/Dashboard";
+
 function App() {
   return (
     <div>
-      Dashboard.
+      <Header/>
+      <Dashbaord/>
     </div>
   );
 }

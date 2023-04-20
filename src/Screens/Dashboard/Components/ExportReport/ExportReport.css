@@ -1,0 +1,12 @@
+.export-container {
+  display: flex;
+}
+
+.export-content {
+  cursor: pointer;
+  display: flex;
+}
+
+.export-text {
+  color: var(--color-blue);
+}
