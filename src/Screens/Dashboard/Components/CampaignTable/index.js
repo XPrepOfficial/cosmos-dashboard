@@ -21,7 +21,7 @@ const campaignTableCols = [
         {status.map((status) => {
           let color = "blue";
           return (
-            <Tag color={color} key={status}>
+            <Tag color={color} key={new Date() + status}>
               {status.toUpperCase()}
             </Tag>
           );
@@ -69,7 +69,7 @@ const data = [
     revenue: "0",
   },
   {
-    key: "1",
+    key: "2",
     campaignName: "Sign Up helper journey (Push-1)",
     channel: "push",
     status: ["Running"],
@@ -80,7 +80,7 @@ const data = [
     revenue: "0",
   },
   {
-    key: "1",
+    key: "3",
     campaignName: "Sign Up helper journey (Push-1)",
     channel: "push",
     status: ["Running"],
@@ -91,7 +91,7 @@ const data = [
     revenue: "0",
   },
   {
-    key: "1",
+    key: "4",
     campaignName: "Sign Up helper journey (Push-1)",
     channel: "push",
     status: ["Running"],
@@ -102,7 +102,7 @@ const data = [
     revenue: "0",
   },
   {
-    key: "1",
+    key: "5",
     campaignName: "Sign Up helper journey (Push-1)",
     channel: "push",
     status: ["Running"],
@@ -113,7 +113,7 @@ const data = [
     revenue: "0",
   },
   {
-    key: "1",
+    key: "6",
     campaignName: "Sign Up helper journey (Push-1)",
     channel: "push",
     status: ["Running"],
@@ -124,7 +124,7 @@ const data = [
     revenue: "0",
   },
   {
-    key: "1",
+    key: "7",
     campaignName: "Sign Up helper journey (Push-1)",
     channel: "push",
     status: ["Running"],
@@ -135,7 +135,7 @@ const data = [
     revenue: "0",
   },
   {
-    key: "1",
+    key: "8",
     campaignName: "Sign Up helper journey (Push-1)",
     channel: "push",
     status: ["Running"],
@@ -146,7 +146,7 @@ const data = [
     revenue: "0",
   },
   {
-    key: "1",
+    key: "9",
     campaignName: "Sign Up helper journey (Push-1)",
     channel: "push",
     status: ["Running"],
@@ -157,7 +157,7 @@ const data = [
     revenue: "0",
   },
   {
-    key: "1",
+    key: "10",
     campaignName: "Sign Up helper journey (Push-1)",
     channel: "push",
     status: ["Running"],
@@ -168,7 +168,7 @@ const data = [
     revenue: "0",
   },
   {
-    key: "1",
+    key: "11",
     campaignName: "Sign Up helper journey (Push-1)",
     channel: "push",
     status: ["Running"],
@@ -179,7 +179,7 @@ const data = [
     revenue: "0",
   },
   {
-    key: "1",
+    key: "12",
     campaignName: "Sign Up helper journey (Push-1)",
     channel: "push",
     status: ["Running"],
@@ -190,7 +190,7 @@ const data = [
     revenue: "0",
   },
   {
-    key: "1",
+    key: "13",
     campaignName: "Sign Up helper journey (Push-1)",
     channel: "push",
     status: ["Running"],
@@ -201,7 +201,7 @@ const data = [
     revenue: "0",
   },
   {
-    key: "1",
+    key: "14",
     campaignName: "Sign Up helper journey (Push-1)",
     channel: "push",
     status: ["Running"],
@@ -212,7 +212,7 @@ const data = [
     revenue: "0",
   },
   {
-    key: "1",
+    key: "15",
     campaignName: "Sign Up helper journey (Push-1)",
     channel: "push",
     status: ["Running"],
