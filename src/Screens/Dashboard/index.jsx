@@ -12,14 +12,9 @@ import "./Dashboard.css";
 const items = [
   {
     key: "1",
-    label: `Campaigns Table View`,
+    label: `Campaigns`,
     children: <CampaignTable />,
-  },
-  {
-    key: "2",
-    label: `Campaigns Chart`,
-    children: "",
-  },
+  }
 ];
 
 const Dashboard = () => {

@@ -22,7 +22,6 @@ const cardMap = [
 const InfoCard = () => (
   <div className="info-card-container">
     {cardMap.map((card) => (
-      <Badge.Ribbon key={card.title} text={card.title} placement="start" color={card.color}>
         <Card style={{ width: 300, marginTop: 16 }} loading={false}>
           <Meta
             avatar={
@@ -34,7 +33,6 @@ const InfoCard = () => (
             description={card.value}
           />
         </Card>
-      </Badge.Ribbon>
     ))}
   </div>
 );
