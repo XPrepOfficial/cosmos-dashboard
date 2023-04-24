@@ -5,8 +5,8 @@ import DateFilter from "../DateFilter";
 import "./ExportModal.css";
 
 const ExportModal = ({ onClose }) => {
-  const [orgArr, setOrgArr] = useState([]);
   const [dateSelected, setDateSelected] = useState("");
+  const [selectedOrgValue, setSelectedOrgValue] = useState([]);
   const ids = [];
   const options = [];
 
@@ -28,8 +28,11 @@ const ExportModal = ({ onClose }) => {
 
   const handleOrgChange = (value) => {
     if(value.includes("ALL")) {
-      setOrgArr(ids);
-    } else setOrgArr(value);
+      setSelectedOrgValue([{
+        label: "Select All",
+        value: "ALL",
+      }]);
+    } else setSelectedOrgValue(value);
   };
 
   const handleDatesSelected = (dates) => {
@@ -47,7 +50,7 @@ const ExportModal = ({ onClose }) => {
         onCancel={() => onClose()}
         okText={"Export"}
         className="export-modal-container"
-        okButtonProps={{ disabled: !(orgArr.length > 0 && dateSelected) }}
+        okButtonProps={{ disabled: !(selectedOrgValue.length > 0 && dateSelected) }}
       >
         <div className="export-modal-content">
           <div className="export-modal-select">
@@ -58,6 +61,7 @@ const ExportModal = ({ onClose }) => {
               placeholder="Select"
               onChange={handleOrgChange}
               options={options}
+              value={selectedOrgValue}
             />
           </div>
           <div className="export-modal-select">
