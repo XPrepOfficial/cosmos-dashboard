@@ -12,26 +12,26 @@ const options = [
   { value: "custom", label: "Custom dates" },
 ];
 
-const DateFilter = () => {
-  const [selectedValue, setSelectedValue] = useState("");
+const DateFilter = ({handleDatesSelected}) => {
   const [isCustomSelected, setIsCustomSelected] = useState(false);
-  const [customDateValue, setCusomDateValue] = useState("");
 
   const onDatesChange = (_, dateString) => {
-    // alert("make api call with ", `${dateString[0]}-${dateString[1]}`);
+    handleDatesSelected(`${dateString[0]}-${dateString[1]}`)
   };
 
   const handleChange = (value) => {
-    setSelectedValue(value);
     if (value === "custom") {
       setIsCustomSelected(true);
+      handleDatesSelected("");
     } else {
-      // other dates selected
-    //   alert("make api call with ", value);
+        handleDatesSelected(value);
       setIsCustomSelected(false);
     }
-    console.log(`selected ${value}`);
   };
+
+  const disableDates = (current) => {
+    return current && current.valueOf() >= Date.now();
+  }
 
   return (
     <div
@@ -42,7 +42,7 @@ const DateFilter = () => {
       }`}
     >
       <Select style={{"width": "100%"}} placeholder="Select Date" options={options} onChange={handleChange} />
-      {isCustomSelected ? <RangePicker onChange={onDatesChange}/> : null}
+      {isCustomSelected ? <RangePicker onChange={onDatesChange} disabledDate={disableDates}/> : null}
     </div>
   );
 };

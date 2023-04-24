@@ -29,6 +29,10 @@ const Dashboard = () => {
     setIsExportModal(false);
   };
 
+  const handleDatesSelected = (dates) => {
+    console.log("date filter", dates)
+  }
+
   return (
     <>
       <div className="dashboard-container">
@@ -41,7 +45,7 @@ const Dashboard = () => {
           >
             Export report
           </Button>
-          <DateFilter />
+          <DateFilter handleDatesSelected={handleDatesSelected}/>
         </div>
         <div className="dashboard-content">
           <InfoCard />
