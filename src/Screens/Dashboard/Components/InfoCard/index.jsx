@@ -22,7 +22,7 @@ const cardMap = [
 const InfoCard = () => (
   <div className="info-card-container">
     {cardMap.map((card) => (
-        <Card style={{ width: 300, marginTop: 16 }} loading={false}>
+        <Card key={card.title} style={{ width: 300, marginTop: 16 }} loading={false}>
           <Meta
             avatar={
               <Space direction="vertical">

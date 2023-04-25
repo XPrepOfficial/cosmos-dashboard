@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Select } from "antd";
 import { DatePicker } from "antd";
 import "./DateFilter.css";
@@ -15,8 +15,8 @@ const options = [
 const DateFilter = ({handleDatesSelected}) => {
   const [isCustomSelected, setIsCustomSelected] = useState(false);
 
-  const onDatesChange = (_, dateString) => {
-    handleDatesSelected(`${dateString[0]}-${dateString[1]}`)
+  const onDatesChange = (_, dateArr) => {
+    handleDatesSelected(dateArr)
   };
 
   const handleChange = (value) => {

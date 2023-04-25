@@ -35,8 +35,8 @@ const ExportModal = ({ onClose }) => {
     } else setSelectedOrgValue(value);
   };
 
-  const handleDatesSelected = (dates) => {
-    setDateSelected(dates);
+  const handleDatesSelected = (datesArr) => {
+      setDateSelected(datesArr[0]);
   };
 
   return (
