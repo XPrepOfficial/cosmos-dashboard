@@ -21,7 +21,7 @@ const InfoCard = ({ journeyCardData }) => (
       <Card
         key={card.cardName}
         style={{ width: 300, marginTop: 16 }}
-        loading={journeyCardData.isLoading}
+        loading={journeyCardData?.isLoading}
       >
         <Meta
           avatar={

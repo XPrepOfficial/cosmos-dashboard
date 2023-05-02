@@ -5,7 +5,8 @@ const urls = {
     "journey/campaigns/stats?startDate={0}&endDate={1}&journeyId={2}",
   FETCH_ORG_LIST: "journey/orgs?limit={0}&offset={1}&search={2}&journeyId={3}",
   EXPORT_REPORT: "journey/reports",
-  SELECT_ORGS_LIST : "journey/orgs?journeyId={0}"
+  SELECT_ORGS_LIST: "journey/orgs?journeyId={0}",
+  FETCH_JOURNEY: "journey/list",
 };
 
 export default (type, ...params) => {

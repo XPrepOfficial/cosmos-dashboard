@@ -7,7 +7,7 @@ const Journey = lazy(() => import("./screens/Journey"));
 
 function App() {
   return (
-    <Suspense fallback={<div>Loading</div>} >
+    <Suspense fallback={<Header/>} >
       <Header />
         <Routes>
           {/* <Route

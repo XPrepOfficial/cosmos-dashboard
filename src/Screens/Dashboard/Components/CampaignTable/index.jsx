@@ -50,6 +50,7 @@ const CampaignTable = ({ campaignsTableData }) => (
     columns={campaignTableCols}
     dataSource={campaignsTableData.data}
     pagination={{ position: ["bottomCenter"] }}
+    loading={campaignsTableData.isLoading}
   />
 );
 export default CampaignTable;

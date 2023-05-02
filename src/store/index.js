@@ -10,18 +10,24 @@ import initSelectOrgState from "./initialState/initSelectOrgState";
 import selectOrgReducer from "./reducers/selectOrgReducer";
 import selectOrgSaga from "./sagas/selectOrgSaga";
 
+import initJourneyState from "./initialState/initJourneyState";
+import journeyReducer from "./reducers/journeyReducer";
+import journeySaga from "./sagas/journeySaga";
+
 const initialState = {
+  ...initJourneyState,
   ...initDashboardState,
   ...initSelectOrgState,
 };
 
 const reducers = {
+  ...journeyReducer,
   ...dashboardReducer,
   ...selectOrgReducer,
 };
 
 function* rootSaga() {
-  yield all([...dashboardSaga, ...selectOrgSaga]);
+  yield all([...journeySaga, ...dashboardSaga, ...selectOrgSaga]);
 }
 
 const sagaMiddleware = createSagaMiddleware();

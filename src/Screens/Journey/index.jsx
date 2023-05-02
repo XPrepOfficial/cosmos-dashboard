@@ -1,9 +1,16 @@
 import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Tabs } from "antd";
 import JourneysTable from "./components/JourneyTable";
+import { journeyActionCreators } from "../../actions/journeyActions";
 
 const Journey = () => {
-  useEffect(() => {}, []);
+  const dispatch = useDispatch();
+  const journeyDetails = useSelector((state) => state.journeyDetails);
+
+  useEffect(() => {
+    dispatch(journeyActionCreators.getJourneyData());
+  }, []);
 
   return (
     <div className="global-padding">
@@ -13,7 +20,9 @@ const Journey = () => {
           {
             key: "1",
             label: `List of Journeys`,
-            children: <JourneysTable journeyTableData={[]} />,
+            children: (
+              <JourneysTable journeyDetails={journeyDetails} />
+            ),
           },
         ]}
       />
