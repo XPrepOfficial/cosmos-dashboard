@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Header from "./Components/Header";
 
 const Dashbaord = lazy(() => import("./screens/Dashboard"));
-const Journeys = lazy(() => import("./screens/Journeys"));
+const Journey = lazy(() => import("./screens/Journey"));
 
 function App() {
   return (
@@ -18,8 +18,8 @@ function App() {
               </SemanticUIWrapper>
             }
           /> */}
-          <Route path="/" element={<Dashbaord />} />
-          <Route path="/journeys" element={<Journeys />} />
+          <Route path="/" element={<Journey />} />
+          <Route path="/dashboard/:id" element={<Dashbaord />} />
         </Routes>
     </Suspense>
   );

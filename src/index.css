@@ -35,7 +35,7 @@ body {
   color: #1f1f21;
 }
 
-.mr12{
+.mr12 {
   margin-right: 12px;
 }
 
@@ -43,8 +43,13 @@ body {
   margin-right: 10px;
 }
 
+.global-padding {
+  padding: 24px 24px 0px;
+  background: var(--color-light-grey);
+}
+
 :root {
-  --color-light-grey: #F6F8FA;
-  --color-white: #FFFFFF;
+  --color-light-grey: #f6f8fa;
+  --color-white: #ffffff;
   --color-blue: #2d81f7;
 }
