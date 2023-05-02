@@ -4,35 +4,38 @@ import "./InfoCard.css";
 
 const { Meta } = Card;
 
-const cardMap = [
-  { title: "Entries", value: "46,984,117", color: "pink" },
-  { title: "Exits", value: "46,984,117", color: "volcano" },
-  {
-    title: "In Journeys",
-    value: "46,984,117",
-    color: "gold",
-  },
-  { title: "Sent", value: "46,984,117", color: "lime" },
-  { title: "Delivered", value: "46,984,117", color: "orange" },
-  { title: "Clicks", value: "46,984,117", color: "geekblue" },
-  { title: "Conversions", value: "46,984,117", color: "green" },
-  { title: "Revenue", value: "46,984,117", color: "cyan" },
-];
+const CardsColorMap = {
+  ENTRIES: "pink",
+  EXITS: "volcano",
+  "IN JOURNEY": "gold",
+  SENT: "lime",
+  DELIVERED: "orange",
+  CLICKS: "geekblue",
+  CONVERSIONS: "green",
+  REVENUE: "cyan",
+};
 
-const InfoCard = () => (
+const InfoCard = ({ journeyCardData }) => (
   <div className="info-card-container">
-    {cardMap.map((card) => (
-        <Card key={card.title} style={{ width: 300, marginTop: 16 }} loading={false}>
-          <Meta
-            avatar={
-              <Space direction="vertical">
-                <Badge color={card.color} size={240} />
-              </Space>
-            }
-            title={card.title}
-            description={card.value}
-          />
-        </Card>
+    {journeyCardData?.data.map((card) => (
+      <Card
+        key={card.cardName}
+        style={{ width: 300, marginTop: 16 }}
+        loading={journeyCardData.isLoading}
+      >
+        <Meta
+          avatar={
+            <Space direction="vertical">
+              <Badge
+                color={CardsColorMap[card.cardName] || "black"}
+                size={240}
+              />
+            </Space>
+          }
+          title={card.cardName}
+          description={card.cardCount}
+        />
+      </Card>
     ))}
   </div>
 );

@@ -6,225 +6,58 @@ const campaignTableCols = [
     title: "Campaign Name",
     dataIndex: "campaignName",
     key: "campaignName",
+    filterSearch: true,
   },
   {
     title: "Channel",
     dataIndex: "channel",
     key: "channel",
+    filterSearch: true,
   },
   {
     title: "Status",
     key: "status",
     dataIndex: "status",
-    render: (_, { status }) => (
-      <>
-        {status.map((status) => {
-          let color = "blue";
-          return (
-            <Tag color={color} key={new Date() + status}>
-              {status.toUpperCase()}
-            </Tag>
-          );
-        })}
-      </>
-    ),
+    filterSearch: true,
+    render: (_, { status }) => <Tag color="blue">{status.toUpperCase()}</Tag>,
   },
   {
     title: "Sent",
     dataIndex: "sent",
     key: "sent",
+    filterSearch: true,
   },
   {
     title: "Delivered",
     dataIndex: "delivered",
     key: "delivered",
+    filterSearch: true,
   },
   {
     title: "Unique clicks",
     dataIndex: "uniqueClicks",
     key: "uniqueClicks",
+    filterSearch: true,
   },
   {
     title: "Unique conversions",
     dataIndex: "uniqueConversions",
     key: "uniqueConversions",
+    filterSearch: true,
   },
   {
     title: "Revenue",
     dataIndex: "revenue",
     key: "revenue",
+    filterSearch: true,
   },
 ];
 
-const data = [
-  {
-    key: "1",
-    campaignName: "Sign Up helper journey (Push-1)",
-    channel: "push",
-    status: ["Running"],
-    sent: "43",
-    delivered: "50,4321",
-    uniqueClicks: "7.72%",
-    uniqueConversions: "0.00%",
-    revenue: "0",
-  },
-  {
-    key: "2",
-    campaignName: "Sign Up helper journey (Push-1)",
-    channel: "push",
-    status: ["Running"],
-    sent: "43",
-    delivered: "50,4321",
-    uniqueClicks: "7.72%",
-    uniqueConversions: "0.00%",
-    revenue: "0",
-  },
-  {
-    key: "3",
-    campaignName: "Sign Up helper journey (Push-1)",
-    channel: "push",
-    status: ["Running"],
-    sent: "43",
-    delivered: "50,4321",
-    uniqueClicks: "7.72%",
-    uniqueConversions: "0.00%",
-    revenue: "0",
-  },
-  {
-    key: "4",
-    campaignName: "Sign Up helper journey (Push-1)",
-    channel: "push",
-    status: ["Running"],
-    sent: "43",
-    delivered: "50,4321",
-    uniqueClicks: "7.72%",
-    uniqueConversions: "0.00%",
-    revenue: "0",
-  },
-  {
-    key: "5",
-    campaignName: "Sign Up helper journey (Push-1)",
-    channel: "push",
-    status: ["Running"],
-    sent: "43",
-    delivered: "50,4321",
-    uniqueClicks: "7.72%",
-    uniqueConversions: "0.00%",
-    revenue: "0",
-  },
-  {
-    key: "6",
-    campaignName: "Sign Up helper journey (Push-1)",
-    channel: "push",
-    status: ["Running"],
-    sent: "43",
-    delivered: "50,4321",
-    uniqueClicks: "7.72%",
-    uniqueConversions: "0.00%",
-    revenue: "0",
-  },
-  {
-    key: "7",
-    campaignName: "Sign Up helper journey (Push-1)",
-    channel: "push",
-    status: ["Running"],
-    sent: "43",
-    delivered: "50,4321",
-    uniqueClicks: "7.72%",
-    uniqueConversions: "0.00%",
-    revenue: "0",
-  },
-  {
-    key: "8",
-    campaignName: "Sign Up helper journey (Push-1)",
-    channel: "push",
-    status: ["Running"],
-    sent: "43",
-    delivered: "50,4321",
-    uniqueClicks: "7.72%",
-    uniqueConversions: "0.00%",
-    revenue: "0",
-  },
-  {
-    key: "9",
-    campaignName: "Sign Up helper journey (Push-1)",
-    channel: "push",
-    status: ["Running"],
-    sent: "43",
-    delivered: "50,4321",
-    uniqueClicks: "7.72%",
-    uniqueConversions: "0.00%",
-    revenue: "0",
-  },
-  {
-    key: "10",
-    campaignName: "Sign Up helper journey (Push-1)",
-    channel: "push",
-    status: ["Running"],
-    sent: "43",
-    delivered: "50,4321",
-    uniqueClicks: "7.72%",
-    uniqueConversions: "0.00%",
-    revenue: "0",
-  },
-  {
-    key: "11",
-    campaignName: "Sign Up helper journey (Push-1)",
-    channel: "push",
-    status: ["Running"],
-    sent: "43",
-    delivered: "50,4321",
-    uniqueClicks: "7.72%",
-    uniqueConversions: "0.00%",
-    revenue: "0",
-  },
-  {
-    key: "12",
-    campaignName: "Sign Up helper journey (Push-1)",
-    channel: "push",
-    status: ["Running"],
-    sent: "43",
-    delivered: "50,4321",
-    uniqueClicks: "7.72%",
-    uniqueConversions: "0.00%",
-    revenue: "0",
-  },
-  {
-    key: "13",
-    campaignName: "Sign Up helper journey (Push-1)",
-    channel: "push",
-    status: ["Running"],
-    sent: "43",
-    delivered: "50,4321",
-    uniqueClicks: "7.72%",
-    uniqueConversions: "0.00%",
-    revenue: "0",
-  },
-  {
-    key: "14",
-    campaignName: "Sign Up helper journey (Push-1)",
-    channel: "push",
-    status: ["Running"],
-    sent: "43",
-    delivered: "50,4321",
-    uniqueClicks: "7.72%",
-    uniqueConversions: "0.00%",
-    revenue: "0",
-  },
-  {
-    key: "15",
-    campaignName: "Sign Up helper journey (Push-1)",
-    channel: "push",
-    status: ["Running"],
-    sent: "43",
-    delivered: "50,4321",
-    uniqueClicks: "7.72%",
-    uniqueConversions: "0.00%",
-    revenue: "0",
-  },
-];
-
-const CampaignTable = () => (
-  <Table columns={campaignTableCols} dataSource={data} pagination={{ position: ["bottomCenter"] }}/>
+const CampaignTable = ({ campaignsTableData }) => (
+  <Table
+    columns={campaignTableCols}
+    dataSource={campaignsTableData.data}
+    pagination={{ position: ["bottomCenter"] }}
+  />
 );
 export default CampaignTable;
