@@ -1,4 +1,5 @@
 import { Table, Tag } from "antd";
+import { CampaignTableLimit } from "../../../../utils/helper";
 import "./CampaignTable.css";
 
 const campaignTableCols = [
@@ -45,12 +46,23 @@ const campaignTableCols = [
   },
 ];
 
-const CampaignTable = ({ campaignsTableData }) => (
+const CampaignTable = ({
+  campaignsTableData,
+  handleCamapignTablePageChange,
+}) => (
   <Table
     columns={campaignTableCols}
-    dataSource={campaignsTableData.data}
-    pagination={{ position: ["bottomCenter"] }}
+    dataSource={campaignsTableData?.data?.campaignList}
+    pagination={{
+      total: campaignsTableData?.data?.totalCampaigns,
+      position: ["bottomCenter"],
+      onChange: (pageNumber) => {
+        handleCamapignTablePageChange(pageNumber);
+      },
+      pageSize: CampaignTableLimit,
+    }}
     loading={campaignsTableData.isLoading}
+    // defaultCurrent={1}
   />
 );
 export default CampaignTable;

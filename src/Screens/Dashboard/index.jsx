@@ -1,6 +1,7 @@
 // import ExportReport from "./Components/ExportReport";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import { DownloadOutlined } from "@ant-design/icons";
 import { Tabs } from "antd";
 import { Button } from "antd";
@@ -9,9 +10,11 @@ import InfoCard from "./Components/InfoCard";
 import CampaignTable from "./Components/CampaignTable";
 import DateFilter from "./Components/DateFilter";
 import { dashboardActionCreators } from "../../actions/dashboardActions";
+import { CampaignTableLimit } from "../../utils/helper";
 import "./Dashboard.css";
 
 const Dashboard = () => {
+  const params = useParams();
   const dispatch = useDispatch();
   const journeyCardData = useSelector(
     (state) => state?.dashboardDetails?.journeyCard
@@ -25,11 +28,26 @@ const Dashboard = () => {
     let param = {
       startDate: "",
       endDate: "",
-      journeyId: "12ewasdajb",
+      journeyId: params?.id,
+      limit: CampaignTableLimit,
+      offset: 0,
     };
     dispatch(dashboardActionCreators.getJourneyCardData(param));
     dispatch(dashboardActionCreators.getCampaignsTableData(param));
   }, []);
+
+  const handleCamapignTablePageChange = (pageNumber) => {
+    let offset = (pageNumber - 1) * CampaignTableLimit;
+    dispatch(
+      dashboardActionCreators.getCampaignsTableData({
+        startDate: "",
+        endDate: "",
+        journeyId: params?.id,
+        limit: CampaignTableLimit,
+        offset,
+      })
+    );
+  };
 
   const handleExportModalClose = () => {
     setIsExportModal(false);
@@ -62,7 +80,12 @@ const Dashboard = () => {
                 key: "1",
                 label: `Campaigns`,
                 children: (
-                  <CampaignTable campaignsTableData={campaignsTableData} />
+                  <CampaignTable
+                    handleCamapignTablePageChange={
+                      handleCamapignTablePageChange
+                    }
+                    campaignsTableData={campaignsTableData}
+                  />
                 ),
               },
             ]}

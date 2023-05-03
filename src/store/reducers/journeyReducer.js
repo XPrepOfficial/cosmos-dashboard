@@ -13,7 +13,6 @@ export default {
         };
       case journeyActions.FETCH_JOURNEY_DATA_SUCCESS:
         return {
-          ...state,
           isLoading: false,
           originalData: payload,
           data: payload,

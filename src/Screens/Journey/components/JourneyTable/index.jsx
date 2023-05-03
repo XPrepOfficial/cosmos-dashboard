@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { Table, Tag } from "antd";
-import {StatusColorMap} from "../../../../utils/helper";
+import { StatusColorMap, JourneyTableLimit } from "../../../../utils/helper";
 import "./JourneyTable.css";
 
-const JourneysTable = ({ journeyDetails }) => {
+const JourneysTable = ({ journeyDetails, handleJourneyTablePageChange }) => {
   let navigate = useNavigate();
 
   const navigateDashboard = (val) => {
@@ -15,11 +15,11 @@ const JourneysTable = ({ journeyDetails }) => {
       title: "Journey Name",
       dataIndex: "name",
       key: "journey",
-      render: (text) => (
+      render: (text, record) => (
         <div>
           <span
             style={{ cursor: "pointer", color: "#2d81f7" }}
-            onClick={() => navigateDashboard(text)}
+            onClick={() => navigateDashboard(record?.journeyId)}
           >
             {text}
           </span>
@@ -30,7 +30,11 @@ const JourneysTable = ({ journeyDetails }) => {
       title: "Status",
       key: "status",
       dataIndex: "status",
-      render: (_, { status }) => <Tag color={StatusColorMap[status] || "blue"}>{status.toUpperCase()}</Tag>,
+      render: (_, { status }) => (
+        <Tag color={StatusColorMap[status] || "blue"}>
+          {status.toUpperCase()}
+        </Tag>
+      ),
     },
     {
       title: "Start Date",
@@ -63,8 +67,15 @@ const JourneysTable = ({ journeyDetails }) => {
     <Table
       loading={journeyDetails?.isLoading}
       columns={JourneysTableCols}
-      dataSource={journeyDetails?.data}
-      pagination={{ position: ["bottomCenter"] }}
+      dataSource={journeyDetails?.data?.journeyList}
+      pagination={{
+        total: journeyDetails?.data?.totalJourney,
+        position: ["bottomCenter"],
+        onChange: (pageNumber) => {
+          handleJourneyTablePageChange(pageNumber);
+        },
+        pageSize: JourneyTableLimit,
+      }}
     />
   );
 };

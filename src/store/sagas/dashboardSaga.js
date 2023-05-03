@@ -32,7 +32,9 @@ function* fetchCampaignsTableData({ payload }) {
         "FETCH_CAMPAIGNS_TABLE_DATA",
         payload?.startTime,
         payload?.endTime,
-        payload?.journeyId
+        payload?.journeyId,
+        payload?.limit,
+        payload?.offset,
       )
     );
     yield put(dashboardActionCreators.getCampaignsTableDataSuccess(response?.data?.data));
