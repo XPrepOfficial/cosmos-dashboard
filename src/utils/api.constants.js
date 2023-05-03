@@ -5,7 +5,7 @@ const urls = {
     "journey/campaigns/stats?&startDate=2022-04-21&endDate=2023-05-01&journeyId={2}&limit={3}&offset={4}",
   FETCH_ORG_LIST: "journey/orgs?limit={0}&offset={1}&search={2}&journeyId={3}",
   EXPORT_REPORT: "journey/reports",
-  SELECT_ORGS_LIST: "journey/orgs?journeyId={0}",
+  SELECT_ORGS_LIST: "journey/orgs?journeyId={0}&limit={1}&offset={2}",
   FETCH_JOURNEY: "journey/list?limit={0}&offset={1}",
 };
 

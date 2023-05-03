@@ -1,14 +1,8 @@
-import { useNavigate } from "react-router-dom";
 import { Table, Tag } from "antd";
 import { StatusColorMap, JourneyTableLimit } from "../../../../utils/helper";
 import "./JourneyTable.css";
 
-const JourneysTable = ({ journeyDetails, handleJourneyTablePageChange }) => {
-  let navigate = useNavigate();
-
-  const navigateDashboard = (val) => {
-    navigate(`/dashboard/${val}`);
-  };
+const JourneysTable = ({ journeyDetails, handleJourneyTablePageChange, navigateDashboard }) => {
 
   const JourneysTableCols = [
     {
@@ -62,7 +56,6 @@ const JourneysTable = ({ journeyDetails, handleJourneyTablePageChange }) => {
       key: "lastUpdated",
     },
   ];
-  console.log("journeyData", journeyDetails);
   return (
     <Table
       loading={journeyDetails?.isLoading}

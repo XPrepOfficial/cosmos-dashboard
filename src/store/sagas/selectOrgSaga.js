@@ -13,20 +13,33 @@ function* fetchSelectOrgData({ payload }) {
       API.get,
       getURL(
         "SELECT_ORGS_LIST",
-        payload?.journeyId
+        payload?.journeyId,
+        payload?.limit,
+        payload?.offset
       )
     );
-    yield put(selectOrgActionCreators.getSelectOrgDataSuccess(response?.data?.data));
+    let data = response?.data?.data;
+    let updatedData = [];
+    if (data?.orgList?.length) {
+      updatedData = {
+        ...data,
+        orgList: data.orgList.map((orgObj) => {
+          return {
+            value: orgObj?.orgId,
+            label: orgObj?.orgId,
+            key: new Date(),
+          };
+        }),
+      };
+    }
+    yield put(selectOrgActionCreators.getSelectOrgDataSuccess(updatedData));
   } catch (error) {
     yield put(selectOrgActionCreators.getSelectOrgDataError(error.description));
   }
 }
 
 function* watchFetchSelectOrgData() {
-  yield takeLatest(
-    selectOrgActions.FETCH_SELECT_ORG_DATA,
-    fetchSelectOrgData
-  );
+  yield takeLatest(selectOrgActions.FETCH_SELECT_ORG_DATA, fetchSelectOrgData);
 }
 
 export default [watchFetchSelectOrgData()];

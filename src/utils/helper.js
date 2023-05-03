@@ -18,5 +18,6 @@ export const CardsColorMap = {
 
 export const CampaignTableLimit = 10;
 export const JourneyTableLimit = 10;
+export const selectOrgLimit = 10;
 
 export const DummyArray8 = [0, 1, 2, 3, 4, 5, 6, 7];

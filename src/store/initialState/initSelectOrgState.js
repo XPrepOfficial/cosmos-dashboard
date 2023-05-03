@@ -2,7 +2,10 @@ export default {
   selectOrgDetails: {
     isLoading: false,
     errorMessage: "",
-    data: [],
+    data: {
+      orgList: [],
+      totalOrgs: 0
+    },
     originalData: [],
   },
 };

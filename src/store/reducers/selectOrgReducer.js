@@ -4,7 +4,6 @@ import initSelectOrgState from "../initialState/initSelectOrgState.js";
 export default {
   selectOrgDetails: (state = initSelectOrgState.selectOrgDetails, action) => {
     const { type, payload } = action;
-
     switch (type) {
       case selectOrgActions.FETCH_SELECT_ORG_DATA:
         return {
@@ -13,11 +12,14 @@ export default {
         };
       case selectOrgActions.FETCH_SELECT_ORG_DATA_SUCCESS:
         return {
-          ...state,
           isLoading: false,
           originalData: payload,
-          data: payload,
-          errorMessage: '',
+          data: {
+            ...state.data,
+            orgList: [...state.data.orgList, ...payload.orgList],
+            totalOrgs: payload?.totalOrgs,
+          },
+          errorMessage: "",
         };
       case selectOrgActions.FETCH_SELECT_ORG_DATA_ERROR:
         return {
@@ -25,6 +27,8 @@ export default {
           isLoading: false,
           errorMessage: payload,
         };
+      case selectOrgActions.RESET_ORG_DATA:
+        return initSelectOrgState.selectOrgDetails;
       default:
         return state;
     }

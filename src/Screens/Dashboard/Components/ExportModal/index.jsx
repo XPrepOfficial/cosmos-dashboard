@@ -5,37 +5,26 @@ import { Modal } from "antd";
 import { Select } from "antd";
 import DateFilter from "../DateFilter";
 import { selectOrgActionCreators } from "../../../../actions/selectOrgActions";
+import { selectOrgLimit } from "../../../../utils/helper";
 import "./ExportModal.css";
 
-const ExportModal = ({ onClose }) => {
+const ExportModal = ({ onClose, journeyId }) => {
   const dispatch = useDispatch();
   const selectOrgDetails = useSelector((state) => state.selectOrgDetails);
   const [orgOptions, setOrgOptions] = useState(selectOrgDetails.data);
   const [dateSelected, setDateSelected] = useState("");
   const [selectedOrgValue, setSelectedOrgValue] = useState([]);
-  const ids = [];
-  const options = [];
+  const [orgOffset, setOrgOffset] = useState(0);
 
   useEffect(() => {
     dispatch(
-      selectOrgActionCreators.getSelectOrgData({ journeyId: "12ewasdajb" })
+      selectOrgActionCreators.getSelectOrgData({
+        journeyId,
+        limit: selectOrgLimit,
+        offset: orgOffset,
+      })
     );
   }, []);
-
-  options.push({
-    label: "Select All",
-    value: "ALL",
-  });
-
-  for (let i = 0; i < 100000; i++) {
-    const value = `${i.toString(36)}${i}`;
-    options.push({
-      label: value,
-      value,
-      disabled: i === 10,
-    });
-    ids.push(value);
-  }
 
   const handleOrgChange = (value) => {
     if (value.includes("ALL")) {
@@ -50,6 +39,31 @@ const ExportModal = ({ onClose }) => {
 
   const handleDatesSelected = (datesArr) => {
     setDateSelected(datesArr[0]);
+  };
+
+  const handleOrgSearch = (val) => {
+    console.log(val);
+  };
+
+  const handleOrgDataScroll = (e) => {
+    e.persist();
+    let target = e.target;
+    if (target.scrollTop + target.offsetHeight === target.scrollHeight) {
+      if (
+        selectOrgDetails?.data?.totalOrgs >
+        selectOrgDetails?.data?.orgList.length
+      ) {
+        let updatedOffset = orgOffset + 1;
+        setOrgOffset(updatedOffset);
+        dispatch(
+          selectOrgActionCreators.getSelectOrgData({
+            journeyId,
+            limit: selectOrgLimit,
+            offset: updatedOffset * selectOrgLimit,
+          })
+        );
+      }
+    }
   };
 
   return (
@@ -75,9 +89,11 @@ const ExportModal = ({ onClose }) => {
               style={{ width: "100%" }}
               placeholder="Select"
               onChange={handleOrgChange}
-              options={options}
+              options={selectOrgDetails?.data?.orgList}
               value={selectedOrgValue}
-              loading={selectOrgDetails.isLoading}
+              loading={selectOrgDetails?.isLoading}
+              onSearch={handleOrgSearch}
+              onPopupScroll={(e) => handleOrgDataScroll(e)}
             />
           </div>
           <div className="export-modal-select">

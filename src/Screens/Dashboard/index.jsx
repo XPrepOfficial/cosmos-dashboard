@@ -10,6 +10,7 @@ import InfoCard from "./Components/InfoCard";
 import CampaignTable from "./Components/CampaignTable";
 import DateFilter from "./Components/DateFilter";
 import { dashboardActionCreators } from "../../actions/dashboardActions";
+import { selectOrgActionCreators } from "../../actions/selectOrgActions";
 import { CampaignTableLimit } from "../../utils/helper";
 import "./Dashboard.css";
 
@@ -34,6 +35,7 @@ const Dashboard = () => {
     };
     dispatch(dashboardActionCreators.getJourneyCardData(param));
     dispatch(dashboardActionCreators.getCampaignsTableData(param));
+    dispatch(selectOrgActionCreators.resetOrgData())
   }, []);
 
   const handleCamapignTablePageChange = (pageNumber) => {
@@ -92,7 +94,9 @@ const Dashboard = () => {
           />
         </div>
       </div>
-      {isExportModal ? <ExportModal onClose={handleExportModalClose} /> : null}
+      {isExportModal ? (
+        <ExportModal journeyId={params?.id} onClose={handleExportModalClose} />
+      ) : null}
     </>
   );
 };

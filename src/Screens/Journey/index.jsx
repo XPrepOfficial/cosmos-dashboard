@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { Tabs } from "antd";
 import JourneysTable from "./components/JourneyTable";
 import { journeyActionCreators } from "../../actions/journeyActions";
@@ -7,6 +8,7 @@ import { JourneyTableLimit } from "../../utils/helper";
 
 const Journey = () => {
   const dispatch = useDispatch();
+  let navigate = useNavigate();
   const journeyDetails = useSelector((state) => state.journeyDetails);
 
   useEffect(() => {
@@ -17,6 +19,10 @@ const Journey = () => {
       })
     );
   }, []);
+
+  const navigateDashboard = (val) => {
+    navigate(`/dashboard/${val}`);
+  };
 
   const handleJourneyTablePageChange = (pageNumber) => {
     let offset = (pageNumber - 1) * JourneyTableLimit;
@@ -40,6 +46,7 @@ const Journey = () => {
               <JourneysTable
                 handleJourneyTablePageChange={handleJourneyTablePageChange}
                 journeyDetails={journeyDetails}
+                navigateDashboard={navigateDashboard}
               />
             ),
           },
