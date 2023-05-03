@@ -1,5 +1,5 @@
 import { lazy, Suspense } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import Header from "./Components/Header";
 
 const Dashbaord = lazy(() => import("./screens/Dashboard"));
@@ -18,8 +18,7 @@ function App() {
               </SemanticUIWrapper>
             }
           /> */}
-          {/* <Route path="/" element={ <Redirect to="/journey" /> } /> */}
-          <Route path="/" element={<Journey />} />
+          <Route path="/" element={<Navigate to="/journey" />} />
           <Route path="/journey" element={<Journey />} />
           <Route path="/dashboard/:id" element={<Dashbaord />} />
         </Routes>
