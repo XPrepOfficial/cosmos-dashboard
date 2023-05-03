@@ -18,7 +18,7 @@ const Login = () => {
     >
       <a onClick={(e) => e.preventDefault()}>
         <Space>
-          Siddharth Jain
+          User
           <DownOutlined />
         </Space>
       </a>

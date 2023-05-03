@@ -18,7 +18,9 @@ function App() {
               </SemanticUIWrapper>
             }
           /> */}
+          {/* <Route path="/" element={ <Redirect to="/journey" /> } /> */}
           <Route path="/" element={<Journey />} />
+          <Route path="/journey" element={<Journey />} />
           <Route path="/dashboard/:id" element={<Dashbaord />} />
         </Routes>
     </Suspense>

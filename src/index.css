@@ -48,6 +48,10 @@ body {
   background: var(--color-light-grey);
 }
 
+.cursor {
+  cursor: pointer;
+}
+
 :root {
   --color-light-grey: #f6f8fa;
   --color-white: #ffffff;
