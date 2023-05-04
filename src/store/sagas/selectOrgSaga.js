@@ -12,10 +12,11 @@ function* fetchSelectOrgData({ payload }) {
     const response = yield call(
       API.get,
       getURL(
-        "SELECT_ORGS_LIST",
+        `${payload?.searchParam ? "SELECT_SEARCH_ORGS_LIST" : "SELECT_ORGS_LIST"}`,
         payload?.journeyId,
         payload?.limit,
-        payload?.offset
+        payload?.offset,
+        payload?.searchParam
       )
     );
     let data = response?.data?.data;

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { Modal } from "antd";
@@ -9,9 +9,12 @@ import { selectOrgLimit } from "../../../../utils/helper";
 import "./ExportModal.css";
 
 const ExportModal = ({ onClose, journeyId }) => {
+  const searchObj = useRef({
+    flag: true,
+    searchValue: "",
+  });
   const dispatch = useDispatch();
   const selectOrgDetails = useSelector((state) => state.selectOrgDetails);
-  const [orgOptions, setOrgOptions] = useState(selectOrgDetails.data);
   const [dateSelected, setDateSelected] = useState("");
   const [selectedOrgValue, setSelectedOrgValue] = useState([]);
   const [orgOffset, setOrgOffset] = useState(0);
@@ -42,7 +45,23 @@ const ExportModal = ({ onClose, journeyId }) => {
   };
 
   const handleOrgSearch = (val) => {
-    console.log(val);
+    searchObj.current.searchValue = val;
+    if (searchObj.current.flag) {
+      dispatch(selectOrgActionCreators.setLoading());
+      searchObj.current.flag = false;
+      setTimeout(() => {
+        searchObj.current.flag = true;
+        setOrgOffset(0);
+        dispatch(
+          selectOrgActionCreators.getSelectOrgData({
+            journeyId,
+            limit: selectOrgLimit,
+            offset: 0,
+            searchParam: searchObj.current.searchValue,
+          })
+        );
+      }, 3000);
+    }
   };
 
   const handleOrgDataScroll = (e) => {
@@ -60,6 +79,7 @@ const ExportModal = ({ onClose, journeyId }) => {
             journeyId,
             limit: selectOrgLimit,
             offset: updatedOffset * selectOrgLimit,
+            searchParam: searchObj.current.searchValue,
           })
         );
       }

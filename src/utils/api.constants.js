@@ -6,6 +6,7 @@ const urls = {
   FETCH_ORG_LIST: "journey/orgs?limit={0}&offset={1}&search={2}&journeyId={3}",
   EXPORT_REPORT: "journey/reports",
   SELECT_ORGS_LIST: "journey/orgs?journeyId={0}&limit={1}&offset={2}",
+  SELECT_SEARCH_ORGS_LIST: "journey/orgs?journeyId={0}&limit={1}&offset={2}&search={3}",
   FETCH_JOURNEY: "journey/list?limit={0}&offset={1}",
 };
 
