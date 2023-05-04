@@ -21,3 +21,17 @@ export const JourneyTableLimit = 10;
 export const selectOrgLimit = 10;
 
 export const DummyArray8 = [0, 1, 2, 3, 4, 5, 6, 7];
+
+export const GetDatesDaysAgo = (daysAgoVal) => {
+  // get the current date
+  let currentDate = new Date();
+
+  // get end dates
+  let daysAgo = new Date();
+  daysAgo.setDate(currentDate.getDate() - daysAgoVal);
+
+  // format the end date as a string
+  let endDate = daysAgo.toISOString().substring(0, 10);
+
+  return [endDate, currentDate.toISOString().slice(0,10)];
+};

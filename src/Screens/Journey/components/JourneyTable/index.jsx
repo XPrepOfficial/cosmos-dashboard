@@ -1,9 +1,12 @@
 import { Table, Tag } from "antd";
-import { StatusColorMap, JourneyTableLimit } from "../../../../utils/helper";
+import { JourneyTableLimit, StatusColorMap } from "../../../../utils/helper";
 import "./JourneyTable.css";
 
-const JourneysTable = ({ journeyDetails, handleJourneyTablePageChange, navigateDashboard }) => {
-
+const JourneysTable = ({
+  journeyDetails,
+  handleJourneyTablePageChange,
+  navigateDashboard,
+}) => {
   const JourneysTableCols = [
     {
       title: "Journey Name",

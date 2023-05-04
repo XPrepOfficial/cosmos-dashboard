@@ -13,9 +13,9 @@ function* fetchJourneyCardData({ payload }) {
       API.get,
       getURL(
         "FETCH_JOURNEY_CARD_DATA",
-        payload?.startTime,
-        payload?.endTime,
-        payload?.journeyId
+        payload?.journeyId,
+        payload?.startDate,
+        payload?.endDate,
       )
     );
     yield put(dashboardActionCreators.getJourneyCardDataSuccess(response?.data?.data));
@@ -30,9 +30,9 @@ function* fetchCampaignsTableData({ payload }) {
       API.get,
       getURL(
         "FETCH_CAMPAIGNS_TABLE_DATA",
-        payload?.startTime,
-        payload?.endTime,
         payload?.journeyId,
+        payload?.startDate,
+        payload?.endDate,
         payload?.limit,
         payload?.offset,
       )

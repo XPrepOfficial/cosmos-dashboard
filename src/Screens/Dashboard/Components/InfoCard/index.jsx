@@ -1,5 +1,5 @@
-import { Badge, Skeleton, Space, Card } from "antd";
-import { DummyArray8, CardsColorMap } from "../../../../utils/helper";
+import { Badge, Card, Skeleton, Space } from "antd";
+import { CardsColorMap, DummyArray8 } from "../../../../utils/helper";
 import "./InfoCard.css";
 
 const { Meta } = Card;

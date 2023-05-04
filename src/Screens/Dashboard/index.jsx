@@ -1,17 +1,16 @@
 // import ExportReport from "./Components/ExportReport";
-import { useState, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { DownloadOutlined } from "@ant-design/icons";
-import { Tabs } from "antd";
-import { Button } from "antd";
-import ExportModal from "./Components/ExportModal";
-import InfoCard from "./Components/InfoCard";
-import CampaignTable from "./Components/CampaignTable";
-import DateFilter from "./Components/DateFilter";
+import { Button, Tabs } from "antd";
 import { dashboardActionCreators } from "../../actions/dashboardActions";
 import { selectOrgActionCreators } from "../../actions/selectOrgActions";
-import { CampaignTableLimit } from "../../utils/helper";
+import { CampaignTableLimit, GetDatesDaysAgo } from "../../utils/helper";
+import CampaignTable from "./Components/CampaignTable";
+import DateFilter from "./Components/DateFilter";
+import ExportModal from "./Components/ExportModal";
+import InfoCard from "./Components/InfoCard";
 import "./Dashboard.css";
 
 const Dashboard = () => {
@@ -23,27 +22,28 @@ const Dashboard = () => {
   const campaignsTableData = useSelector(
     (state) => state?.dashboardDetails?.campaignsTable
   );
+  const dateFilter = useRef(GetDatesDaysAgo(30));
   const [isExportModal, setIsExportModal] = useState(false);
 
   useEffect(() => {
     let param = {
-      startDate: "",
-      endDate: "",
+      startDate: dateFilter.current[0],
+      endDate: dateFilter.current[1],
       journeyId: params?.id,
       limit: CampaignTableLimit,
       offset: 0,
     };
     dispatch(dashboardActionCreators.getJourneyCardData(param));
     dispatch(dashboardActionCreators.getCampaignsTableData(param));
-    dispatch(selectOrgActionCreators.resetOrgData())
+    dispatch(selectOrgActionCreators.resetOrgData());
   }, []);
 
   const handleCamapignTablePageChange = (pageNumber) => {
     let offset = (pageNumber - 1) * CampaignTableLimit;
     dispatch(
       dashboardActionCreators.getCampaignsTableData({
-        startDate: "",
-        endDate: "",
+        startDate: dateFilter.current[0],
+        endDate: dateFilter.current[1],
         journeyId: params?.id,
         limit: CampaignTableLimit,
         offset,
@@ -55,8 +55,17 @@ const Dashboard = () => {
     setIsExportModal(false);
   };
 
-  const handleDatesSelected = (dates) => {
-    console.log("date filter", dates);
+  const handleDatesSelected = (dateArr) => {
+    dateFilter.current = dateArr;
+    let param = {
+      startDate: dateArr[0],
+      endDate: dateArr[1],
+      journeyId: params?.id,
+      limit: CampaignTableLimit,
+      offset: 0,
+    };
+    dispatch(dashboardActionCreators.getJourneyCardData(param));
+    dispatch(dashboardActionCreators.getCampaignsTableData(param));
   };
 
   return (
@@ -71,7 +80,10 @@ const Dashboard = () => {
           >
             Export report
           </Button>
-          <DateFilter handleDatesSelected={handleDatesSelected} />
+          <DateFilter
+            handleDatesSelected={handleDatesSelected}
+            defaultVal="last30"
+          />
         </div>
         <div className="dashboard-content">
           <InfoCard journeyCardData={journeyCardData} />
