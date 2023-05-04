@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { DownloadOutlined } from "@ant-design/icons";
-import { Button, Tabs } from "antd";
+import { Button, message, Tabs } from "antd";
 import { dashboardActionCreators } from "../../actions/dashboardActions";
 import { selectOrgActionCreators } from "../../actions/selectOrgActions";
 import { CampaignTableLimit, GetDatesDaysAgo } from "../../utils/helper";
@@ -16,6 +16,7 @@ import "./Dashboard.css";
 const Dashboard = () => {
   const params = useParams();
   const dispatch = useDispatch();
+  const [messageApi, contextHolder] = message.useMessage();
   const journeyCardData = useSelector(
     (state) => state?.dashboardDetails?.journeyCard
   );
@@ -51,7 +52,16 @@ const Dashboard = () => {
     );
   };
 
-  const handleExportModalClose = () => {
+  const handleExportModalClose = (exported=false) => {
+    if(exported) {
+      // trigger toast here
+      messageApi
+      .open({
+        type: 'loading',
+        content: 'Exporting Report..',
+        duration: 2.5,
+      })
+    }
     setIsExportModal(false);
   };
 
@@ -71,6 +81,7 @@ const Dashboard = () => {
   return (
     <>
       <div className="dashboard-container">
+        {contextHolder}
         <div className="dashboard-actions">
           <Button
             type="primary"
@@ -80,10 +91,7 @@ const Dashboard = () => {
           >
             Export report
           </Button>
-          <DateFilter
-            handleDatesSelected={handleDatesSelected}
-            defaultVal="last30"
-          />
+          <DateFilter handleDatesSelected={handleDatesSelected} defaultVal="last30" />
         </div>
         <div className="dashboard-content">
           <InfoCard journeyCardData={journeyCardData} />

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Modal, Select } from "antd";
 import DateFilter from "../DateFilter";
 import { selectOrgActionCreators } from "../../../../actions/selectOrgActions";
+import { exportReportActionCreators } from "../../../../actions/exportReportActions";
 import { selectOrgLimit } from "../../../../utils/helper";
 import "./ExportModal.css";
 
@@ -27,6 +28,19 @@ const ExportModal = ({ onClose, journeyId }) => {
     );
   }, []);
 
+  const handleExportReport = () => {
+    dispatch(
+      exportReportActionCreators.exportReport({
+        orgIds: selectedOrgValue,
+        startDate: dateSelected[0],
+        endDate: dateSelected[1],
+        journeyId,
+        isAllOrgSelected: selectedOrgValue.includes("ALL"),
+      })
+    );
+    onClose(true);
+  };
+
   const handleOrgChange = (value) => {
     if (value.includes("ALL")) {
       setSelectedOrgValue([
@@ -39,14 +53,7 @@ const ExportModal = ({ onClose, journeyId }) => {
   };
 
   const handleDatesSelected = (datesArr) => {
-    dispatch(
-      selectOrgActionCreators.getSelectOrgData({
-        journeyId,
-        limit: selectOrgLimit,
-        offset: orgOffset,
-      })
-    );
-    setDateSelected(datesArr[0]);
+    setDateSelected(datesArr);
   };
 
   const handleOrgSearch = (val) => {
@@ -98,12 +105,12 @@ const ExportModal = ({ onClose, journeyId }) => {
         width={"570px"}
         centered
         open
-        onOk={() => onClose()}
+        onOk={() => handleExportReport()}
         onCancel={() => onClose()}
         okText={"Export"}
         className="export-modal-container"
         okButtonProps={{
-          disabled: !(selectedOrgValue.length > 0 && dateSelected),
+          disabled: !(selectedOrgValue.length > 0 && dateSelected.length),
         }}
       >
         <div className="export-modal-content">
