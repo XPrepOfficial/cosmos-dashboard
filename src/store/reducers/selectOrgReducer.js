@@ -5,6 +5,11 @@ export default {
   selectOrgDetails: (state = initSelectOrgState.selectOrgDetails, action) => {
     const { type, payload } = action;
     switch (type) {
+      case selectOrgActions.SET_LOADING:
+        return {
+          ...state,
+          isLoading: true,
+        };
       case selectOrgActions.FETCH_SELECT_ORG_DATA:
         return {
           ...state,
@@ -16,7 +21,9 @@ export default {
           originalData: payload,
           data: {
             ...state.data,
-            orgList: [...state.data.orgList, ...payload.orgList],
+            orgList: payload.searchParam
+              ? [...payload.orgList]
+              : [...state.data.orgList, ...payload.orgList],
             totalOrgs: payload?.totalOrgs,
           },
           errorMessage: "",

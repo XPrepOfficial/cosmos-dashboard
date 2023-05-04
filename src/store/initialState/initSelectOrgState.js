@@ -4,7 +4,7 @@ export default {
     errorMessage: "",
     data: {
       orgList: [],
-      totalOrgs: 0
+      totalOrgs: 0,
     },
     originalData: [],
   },
