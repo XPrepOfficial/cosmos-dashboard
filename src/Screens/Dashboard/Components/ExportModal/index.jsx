@@ -41,6 +41,13 @@ const ExportModal = ({ onClose, journeyId }) => {
   };
 
   const handleDatesSelected = (datesArr) => {
+    dispatch(
+      selectOrgActionCreators.getSelectOrgData({
+        journeyId,
+        limit: selectOrgLimit,
+        offset: orgOffset,
+      })
+    );
     setDateSelected(datesArr[0]);
   };
 

@@ -28,7 +28,6 @@ function* fetchSelectOrgData({ payload }) {
           return {
             value: orgObj?.orgId,
             label: orgObj?.orgId,
-            key: new Date(),
           };
         }),
       };
