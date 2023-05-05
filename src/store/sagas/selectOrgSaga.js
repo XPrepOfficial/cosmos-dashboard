@@ -12,7 +12,9 @@ function* fetchSelectOrgData({ payload }) {
     const response = yield call(
       API.get,
       getURL(
-        `${payload?.searchParam ? "SELECT_SEARCH_ORGS_LIST" : "SELECT_ORGS_LIST"}`,
+        `${
+          payload?.searchParam ? "SELECT_SEARCH_ORGS_LIST" : "SELECT_ORGS_LIST"
+        }`,
         payload?.journeyId,
         payload?.limit,
         payload?.offset,
@@ -30,6 +32,7 @@ function* fetchSelectOrgData({ payload }) {
             label: orgObj?.orgId,
           };
         }),
+        searchParam: payload?.searchParam,
       };
     }
     yield put(selectOrgActionCreators.getSelectOrgDataSuccess(updatedData));
