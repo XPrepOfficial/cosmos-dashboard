@@ -51,6 +51,7 @@ const CampaignTable = ({
   handleCamapignTablePageChange,
 }) => (
   <Table
+    // rowKey={(record) => record?.campaignId || record?.campaignName}
     columns={campaignTableCols}
     dataSource={campaignsTableData?.data?.campaignList}
     pagination={{
