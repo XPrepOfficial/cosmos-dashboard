@@ -44,6 +44,7 @@ const Journey = () => {
             label: `List of Journeys`,
             children: (
               <JourneysTable
+                // rowKey={(record) => record?.journeyId || record?.journeyId}
                 handleJourneyTablePageChange={handleJourneyTablePageChange}
                 journeyDetails={journeyDetails}
                 navigateDashboard={navigateDashboard}
