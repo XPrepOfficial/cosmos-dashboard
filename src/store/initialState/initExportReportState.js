@@ -1,7 +1,6 @@
 export default {
-    exportReport: {
-      isLoading: false,
-      errorMessage: "",
-    },
-  };
-  
+  exportReport: {
+    isLoading: false,
+    errorMessage: "",
+  },
+};

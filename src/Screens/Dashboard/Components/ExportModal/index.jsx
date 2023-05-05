@@ -26,6 +26,7 @@ const ExportModal = ({ onClose, journeyId }) => {
         offset: orgOffset,
       })
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleExportReport = () => {

@@ -15,12 +15,16 @@ function* fetchJourneyCardData({ payload }) {
         "FETCH_JOURNEY_CARD_DATA",
         payload?.journeyId,
         payload?.startDate,
-        payload?.endDate,
+        payload?.endDate
       )
     );
-    yield put(dashboardActionCreators.getJourneyCardDataSuccess(response?.data?.data));
+    yield put(
+      dashboardActionCreators.getJourneyCardDataSuccess(response?.data?.data)
+    );
   } catch (error) {
-    yield put(dashboardActionCreators.getJourneyCardDataError(error.description));
+    yield put(
+      dashboardActionCreators.getJourneyCardDataError(error.description)
+    );
   }
 }
 
@@ -34,12 +38,16 @@ function* fetchCampaignsTableData({ payload }) {
         payload?.startDate,
         payload?.endDate,
         payload?.limit,
-        payload?.offset,
+        payload?.offset
       )
     );
-    yield put(dashboardActionCreators.getCampaignsTableDataSuccess(response?.data?.data));
+    yield put(
+      dashboardActionCreators.getCampaignsTableDataSuccess(response?.data?.data)
+    );
   } catch (error) {
-    yield put(dashboardActionCreators.getCampaignsTableDataError(error.description));
+    yield put(
+      dashboardActionCreators.getCampaignsTableDataError(error.description)
+    );
   }
 }
 

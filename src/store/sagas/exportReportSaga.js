@@ -9,14 +9,14 @@ import {
 
 function* exportReport({ payload }) {
   try {
-    yield call(
-      API.post,
-      getURL("EXPORT_REPORT"),
-      payload
-    );
+    yield call(API.post, getURL("EXPORT_REPORT"), payload);
     yield put(exportReportActionCreators.exportReportSuccess());
   } catch (error) {
-    yield put(exportReportActionCreators.exportReportError(error?.message || "Unknown Error"));
+    yield put(
+      exportReportActionCreators.exportReportError(
+        error?.message || "Unknown Error"
+      )
+    );
   }
 }
 

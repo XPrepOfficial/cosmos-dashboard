@@ -4,13 +4,13 @@ export default {
       isLoading: false,
       errorMessage: "",
       data: [],
-      originalData: []
+      originalData: [],
     },
     campaignsTable: {
       isLoading: false,
       errorMessage: "",
       data: [],
-      originalData: []
-    }
+      originalData: [],
+    },
   },
 };
