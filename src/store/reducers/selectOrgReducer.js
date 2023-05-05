@@ -21,10 +21,15 @@ export default {
           originalData: payload,
           data: {
             ...state.data,
-            orgList:
-              payload.searchParam || state.searchParam
-                ? [...payload.orgList]
-                : [...state.data.orgList, ...payload.orgList],
+            orgList: payload.searchParam
+              ? [...payload.orgList]
+              : state.data.orgList[0]?.value === "ALL"
+              ? [...state.data.orgList, ...payload.orgList]
+              : [
+                  ...[{ value: "ALL", label: "SELECT ALL" }],
+                  ...state.data.orgList,
+                  ...payload.orgList,
+                ],
             totalOrgs: payload?.totalOrgs,
             searchParam: payload.searchParam ? payload.searchParam : "",
           },

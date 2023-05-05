@@ -31,11 +31,11 @@ const ExportModal = ({ onClose, journeyId }) => {
   const handleExportReport = () => {
     dispatch(
       exportReportActionCreators.exportReport({
-        orgIds: selectedOrgValue,
+        orgIds: selectedOrgValue[0]?.value === "ALL" ? [] : selectedOrgValue,
         startDate: dateSelected[0],
         endDate: dateSelected[1],
         journeyId,
-        isAllOrgSelected: selectedOrgValue.includes("ALL"),
+        isAllOrgSelected: selectedOrgValue[0]?.value === "ALL",
       })
     );
     onClose(true);
