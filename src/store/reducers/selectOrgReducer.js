@@ -26,7 +26,7 @@ export default {
               : state.data.orgList[0]?.value === "ALL"
               ? [...state.data.orgList, ...payload.orgList]
               : [
-                  ...[{ value: "ALL", label: "SELECT ALL" }],
+                  ...[{ value: "ALL", label: "SELECT ALL", key: new Date() }],
                   ...state.data.orgList,
                   ...payload.orgList,
                 ],

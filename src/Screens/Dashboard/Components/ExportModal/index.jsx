@@ -122,6 +122,7 @@ const ExportModal = ({ onClose, journeyId }) => {
               placeholder="Select"
               onChange={handleOrgChange}
               options={selectOrgDetails?.data?.orgList}
+              key="key"
               value={selectedOrgValue}
               loading={selectOrgDetails?.isLoading}
               onSearch={handleOrgSearch}
