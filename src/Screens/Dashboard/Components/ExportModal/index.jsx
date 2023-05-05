@@ -31,7 +31,7 @@ const ExportModal = ({ onClose, journeyId }) => {
   const handleExportReport = () => {
     dispatch(
       exportReportActionCreators.exportReport({
-        orgIds: selectedOrgValue,
+        orgId: selectedOrgValue,
         startDate: dateSelected[0],
         endDate: dateSelected[1],
         journeyId,

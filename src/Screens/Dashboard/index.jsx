@@ -23,7 +23,9 @@ const Dashboard = () => {
   const campaignsTableData = useSelector(
     (state) => state?.dashboardDetails?.campaignsTable
   );
+  const exportReportDetails = useSelector((state) => state.exportReport);
   const dateFilter = useRef(GetDatesDaysAgo(30));
+  const hideExportLoadingMessage = useRef();
   const [isExportModal, setIsExportModal] = useState(false);
 
   useEffect(() => {
@@ -39,6 +41,27 @@ const Dashboard = () => {
     dispatch(selectOrgActionCreators.resetOrgData());
   }, []);
 
+  useEffect(() => {
+    if (exportReportDetails.isLoading) {
+      hideExportLoadingMessage.current = messageApi.open({
+        type: "loading",
+        content: "Exporting Report..",
+        duration: 0,
+      });
+    } else {
+      if (typeof hideExportLoadingMessage.current === "function") {
+        hideExportLoadingMessage.current();
+        messageApi.open({
+          type: exportReportDetails.errorMessage ? "error" : "success",
+          content: exportReportDetails.errorMessage
+            ? `ERROR : ${exportReportDetails.errorMessage}`
+            : "Report exported successfully",
+          duration: 3,
+        });
+      }
+    }
+  }, [exportReportDetails.isLoading]);
+
   const handleCamapignTablePageChange = (pageNumber) => {
     let offset = (pageNumber - 1) * CampaignTableLimit;
     dispatch(
@@ -52,17 +75,8 @@ const Dashboard = () => {
     );
   };
 
-  const handleExportModalClose = (exported=false) => {
-    if(exported) {
-      // trigger toast here
-      messageApi
-      .open({
-        type: 'loading',
-        content: 'Exporting Report..',
-        duration: 2.5,
-      })
-    }
-    setIsExportModal(false);
+  const handleExportModalClose = () => {
+    setIsExportModal();
   };
 
   const handleDatesSelected = (dateArr) => {
@@ -88,10 +102,14 @@ const Dashboard = () => {
             icon={<DownloadOutlined />}
             size={"large"}
             onClick={() => setIsExportModal(true)}
+            loading={exportReportDetails.isLoading}
           >
             Export report
           </Button>
-          <DateFilter handleDatesSelected={handleDatesSelected} defaultVal="last30" />
+          <DateFilter
+            handleDatesSelected={handleDatesSelected}
+            defaultVal="last30"
+          />
         </div>
         <div className="dashboard-content">
           <InfoCard journeyCardData={journeyCardData} />

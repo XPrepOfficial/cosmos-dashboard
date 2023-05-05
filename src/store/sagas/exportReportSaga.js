@@ -16,7 +16,7 @@ function* exportReport({ payload }) {
     );
     yield put(exportReportActionCreators.exportReportSuccess());
   } catch (error) {
-    yield put(exportReportActionCreators.exportReportError(error.description));
+    yield put(exportReportActionCreators.exportReportError(error?.message || "Unknown Error"));
   }
 }
 

@@ -26,7 +26,6 @@ const getAccessToken = () => {
 
 API.interceptors.request.use(
   (config) => {
-    console.log("here", config)
     const configCopy = { ...config };
     const token = getAccessToken();
     configCopy.headers["x-access-token"] =
@@ -38,10 +37,10 @@ API.interceptors.request.use(
 );
 
 API.interceptors.response.use(
-  res => {
+  (res) => {
     return Promise.resolve(res);
   },
-  err => {
+  (err) => {
     return Promise.reject(err);
   }
 );
