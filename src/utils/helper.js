@@ -33,5 +33,5 @@ export const GetDatesDaysAgo = (daysAgoVal) => {
   // format the end date as a string
   let endDate = daysAgo.toISOString().substring(0, 10);
 
-  return [endDate, currentDate.toISOString().slice(0,10)];
+  return [endDate, currentDate.toISOString().slice(0, 10)];
 };

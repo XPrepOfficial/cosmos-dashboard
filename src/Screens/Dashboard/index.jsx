@@ -39,6 +39,7 @@ const Dashboard = () => {
     dispatch(dashboardActionCreators.getJourneyCardData(param));
     dispatch(dashboardActionCreators.getCampaignsTableData(param));
     dispatch(selectOrgActionCreators.resetOrgData());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -60,6 +61,7 @@ const Dashboard = () => {
         });
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [exportReportDetails.isLoading]);
 
   const handleCamapignTablePageChange = (pageNumber) => {

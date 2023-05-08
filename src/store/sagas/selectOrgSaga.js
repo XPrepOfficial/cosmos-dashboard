@@ -30,7 +30,7 @@ function* fetchSelectOrgData({ payload }) {
           return {
             value: orgObj?.orgId,
             label: orgObj?.orgId,
-            key: orgObj?.orgId + new Date()
+            key: orgObj?.orgId + new Date(),
           };
         }),
         searchParam: payload?.searchParam,

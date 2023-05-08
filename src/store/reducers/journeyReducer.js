@@ -16,7 +16,7 @@ export default {
           isLoading: false,
           originalData: payload,
           data: payload,
-          errorMessage: '',
+          errorMessage: "",
         };
       case journeyActions.FETCH_JOURNEY_DATA_ERROR:
         return {
