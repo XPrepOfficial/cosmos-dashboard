@@ -26,6 +26,7 @@ const Dashboard = () => {
   const exportReportDetails = useSelector((state) => state.exportReport);
   const dateFilter = useRef(GetDatesDaysAgo(30));
   const hideExportLoadingMessage = useRef();
+  const defaultPage = useRef(1);
   const [isExportModal, setIsExportModal] = useState(false);
 
   useEffect(() => {
@@ -66,6 +67,7 @@ const Dashboard = () => {
 
   const handleCamapignTablePageChange = (pageNumber) => {
     let offset = (pageNumber - 1) * CampaignTableLimit;
+    defaultPage.current = pageNumber;
     dispatch(
       dashboardActionCreators.getCampaignsTableData({
         startDate: dateFilter.current[0],
@@ -90,6 +92,7 @@ const Dashboard = () => {
       limit: CampaignTableLimit,
       offset: 0,
     };
+    defaultPage.current = 1;
     dispatch(dashboardActionCreators.getJourneyCardData(param));
     dispatch(dashboardActionCreators.getCampaignsTableData(param));
   };
@@ -127,6 +130,7 @@ const Dashboard = () => {
                       handleCamapignTablePageChange
                     }
                     campaignsTableData={campaignsTableData}
+                    defaultPage={defaultPage.current}
                   />
                 ),
               },

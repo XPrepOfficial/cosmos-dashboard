@@ -49,6 +49,7 @@ const campaignTableCols = [
 const CampaignTable = ({
   campaignsTableData,
   handleCamapignTablePageChange,
+  defaultPage,
 }) => (
   <Table
     // rowKey={(record) => record?.campaignId || record?.campaignName}
@@ -61,9 +62,9 @@ const CampaignTable = ({
         handleCamapignTablePageChange(pageNumber);
       },
       pageSize: CampaignTableLimit,
+      current: defaultPage,
     }}
     loading={campaignsTableData.isLoading}
-    // defaultCurrent={1}
   />
 );
 export default CampaignTable;
