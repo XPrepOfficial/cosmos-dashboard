@@ -1,5 +1,5 @@
 export default {
   appDetails: {
-    isAuthenticated: true || localStorage.getItem("token"),
+    isAuthenticated: localStorage.getItem("token") || true,
   },
 };
