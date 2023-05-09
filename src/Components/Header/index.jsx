@@ -1,6 +1,14 @@
 import { useNavigate } from "react-router-dom";
-import Login from "../Login";
+import { DownOutlined } from "@ant-design/icons";
+import { Dropdown, Space } from "antd";
 import "./Header.css";
+
+const items = [
+  {
+    label: "Sign Out",
+    key: "0",
+  },
+];
 
 const Header = () => {
   let navigate = useNavigate();
@@ -9,7 +17,18 @@ const Header = () => {
       <span className="text-24 cursor" onClick={() => navigate("journey")}>
         Journey
       </span>
-      <Login />
+      <Dropdown
+        menu={{ items }}
+        trigger={["click"]}
+        overlayStyle={{ cursor: "pointer" }}
+      >
+        <a onClick={(e) => e.preventDefault()}>
+          <Space>
+            User
+            <DownOutlined />
+          </Space>
+        </a>
+      </Dropdown>
     </div>
   );
 };
