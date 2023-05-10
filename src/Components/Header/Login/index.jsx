@@ -25,7 +25,7 @@ const LoginJSX = () => {
 const Login = ({ isButton = false }) => {
   const items = [
     {
-      label: "Sign Out",
+      label: <div onClick={() => handleLogout()}>Sign Out</div>,
       key: "0",
     },
   ];
@@ -50,18 +50,9 @@ const Login = ({ isButton = false }) => {
           <div className="login-wrap">
             {user?.name ? user.name : ""}
             {user?.picture ? (
-              <img
-                className="user-img"
-                src={user.picture}
-                alt=""
-                onClick={() => handleLogout()}
-              />
+              <img className="user-img" src={user.picture} alt="" />
             ) : (
-              <Avatar
-                onClick={() => handleLogout()}
-                size="large"
-                icon={<UserOutlined />}
-              />
+              <Avatar size="large" icon={<UserOutlined />} />
             )}
           </div>
         </div>
