@@ -3,15 +3,15 @@ import Axios from "axios";
 const URL_OBJECT = () => {
   switch (import.meta.env.VITE_APP_ENV) {
     case "development":
-      return "http://34.110.128.108";
+      return "https://apip-gcp.classplusapp.com";
     case "staging":
-      return "http://34.110.128.108";
+      return "https://apip-gcp.classplusapp.com";
     case "preprod":
-      return "http://34.110.128.108";
+      return "https://apip-gcp.classplusapp.com";
     case "production":
-      return "http://34.110.128.108";
+      return "https://apip-gcp.classplusapp.com";
     default:
-      return "http://34.110.128.108";
+      return "https://apip-gcp.classplusapp.com";
   }
 };
 

@@ -35,6 +35,13 @@ body {
   color: #1f1f21;
 }
 
+.text-24-light-blue {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  color: var(--color-light-blue);
+}
+
 .mr12 {
   margin-right: 12px;
 }
@@ -56,4 +63,5 @@ body {
   --color-light-grey: #f6f8fa;
   --color-white: #ffffff;
   --color-blue: #2d81f7;
+  --color-light-blue: rgba(0, 173, 231);
 }

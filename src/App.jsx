@@ -1,6 +1,7 @@
 import { lazy, Suspense } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 import { Spin } from "antd";
+import Protected from "./ProtectedRoute";
 import Header from "./Components/Header";
 
 const Dashbaord = lazy(() => import("./screens/Dashboard"));
@@ -19,19 +20,25 @@ function App() {
         </>
       }
     >
-      <Header />
       <Routes>
-        {/* <Route
-            path="/login"
-            element={
-              <SemanticUIWrapper>
-                <Login />
-              </SemanticUIWrapper>
-            }
-          /> */}
         <Route path="/" element={<Navigate to="/journey" />} />
-        <Route path="/journey" element={<Journey />} />
-        <Route path="/dashboard/:id" element={<Dashbaord />} />
+        <Route
+          path="/journey"
+          element={
+            <Protected>
+              <Journey />
+            </Protected>
+          }
+        />
+        <Route
+          path="/dashboard/:id"
+          element={
+            <Protected>
+              <Dashbaord />
+            </Protected>
+          }
+        />
+        <Route path="*" element={<Navigate to="/journey" />} />
       </Routes>
     </Suspense>
   );

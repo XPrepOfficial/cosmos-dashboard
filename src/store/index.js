@@ -2,6 +2,10 @@ import { createStore, combineReducers, compose, applyMiddleware } from "redux";
 import createSagaMiddleware from "redux-saga";
 import { all } from "redux-saga/effects";
 
+import initAppState from "./initialState/initAppState";
+import appReducer from "./reducers/appReducer";
+import appSaga from "./sagas/appSaga";
+
 import initJourneyState from "./initialState/initJourneyState";
 import journeyReducer from "./reducers/journeyReducer";
 import journeySaga from "./sagas/journeySaga";
@@ -19,6 +23,7 @@ import exportReportReducer from "./reducers/exportReportReducer";
 import exportReportSaga from "./sagas/exportReportSaga";
 
 const initialState = {
+  ...initAppState,
   ...initJourneyState,
   ...initDashboardState,
   ...initSelectOrgState,
@@ -26,6 +31,7 @@ const initialState = {
 };
 
 const reducers = {
+  ...appReducer,
   ...journeyReducer,
   ...dashboardReducer,
   ...selectOrgReducer,
@@ -34,6 +40,7 @@ const reducers = {
 
 function* rootSaga() {
   yield all([
+    ...appSaga,
     ...journeySaga,
     ...dashboardSaga,
     ...selectOrgSaga,
