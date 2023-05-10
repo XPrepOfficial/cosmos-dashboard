@@ -1,29 +1,28 @@
 import { put, takeLatest } from "redux-saga/effects";
+import { googleLogout } from "@react-oauth/google";
 
 import { appActions, appActionCreators } from "../../actions/appActions";
 
 function* appLogin() {
   try {
-    yield put(appActionCreators.appLogin());
+    yield put(appActionCreators.appLoginSuccess());
   } catch (error) {
-    console.log("error", error);
+    yield put(appActionCreators.appLoginError());
   }
 }
 
 function* appLogout() {
   try {
-    yield put(appActionCreators.appLogout());
+    yield googleLogout();
+    yield put(appActionCreators.appLogoutSuccess());
   } catch (error) {
-    console.log("error", error);
+    yield put(appActionCreators.appLogoutError(error));
   }
 }
 
-function* watchAppLogin() {
-  yield takeLatest(appActions.FETCH_JOURNEY_DATA, appLogin);
+function* watchApp() {
+  yield takeLatest(appActions.APP_LOGIN, appLogin);
+  yield takeLatest(appActions.APP_LOGOUT, appLogout);
 }
 
-function* watchAppLogout() {
-  yield takeLatest(appActions.FETCH_JOURNEY_DATA, appLogout);
-}
-
-export default [watchAppLogin(), watchAppLogout()];
+export default [watchApp()];
