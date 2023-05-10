@@ -1,6 +1,6 @@
 export default {
   appDetails: {
-    isAuthenticated: localStorage.getItem("token") || true,
+    isAuthenticated: localStorage.getItem("token"),
     errorMessage: "",
   },
 };
