@@ -4,6 +4,13 @@
   height: calc(100vh - 64px);
 }
 
+.login-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
 .login-left {
   background: var(--color-light-blue);
 }
@@ -14,4 +21,8 @@
   justify-content: center;
   flex-direction: column;
   gap: 24px;
+}
+
+.user-img {
+  height: 45px;
 }

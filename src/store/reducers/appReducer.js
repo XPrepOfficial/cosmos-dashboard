@@ -1,5 +1,6 @@
 import { appActions } from "../../actions/appActions";
 import initAppState from "../initialState/initAppState";
+import { getUserDetailsFromJWT } from "../../utils/helper";
 
 export default {
   appDetails: (state = initAppState.appDetails, action) => {
@@ -11,18 +12,19 @@ export default {
           ...state,
           isAuthenticated: true,
           errorMessage: "",
+          user: getUserDetailsFromJWT(payload?.credential),
         };
       case appActions.APP_LOGIN_ERROR:
         return {
-          ...state,
           isAuthenticated: false,
           errorMessage: payload,
+          user: {},
         };
       case appActions.APP_LOGOUT_SUCCESS:
         return {
-          ...state,
           isAuthenticated: false,
           errorMessage: "",
+          user: {},
         };
       case appActions.APP_LOGOUT_ERROR:
         return {

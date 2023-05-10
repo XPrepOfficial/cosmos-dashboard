@@ -8,8 +8,9 @@ export const appActions = {
 };
 
 export const appActionCreators = {
-  appLogin: () => ({
+  appLogin: (payload) => ({
     type: appActions.APP_LOGIN,
+    payload,
   }),
   appLoginSuccess: (payload) => ({
     type: appActions.APP_LOGIN_SUCCESS,

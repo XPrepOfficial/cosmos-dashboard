@@ -11,8 +11,7 @@ const LoginJSX = () => {
   return (
     <GoogleLogin
       onSuccess={(credentialResponse) => {
-        dispatch(appActionCreators.appLoginSuccess(credentialResponse));
-        console.log(credentialResponse);
+        dispatch(appActionCreators.appLogin(credentialResponse));
       }}
       onError={(err) => {
         dispatch(appActionCreators.appLoginError(err));
@@ -26,14 +25,12 @@ const LoginJSX = () => {
 const Login = ({ isButton = false }) => {
   const items = [
     {
-      label: <div onClick={() => handleLogout()}>Sign Out</div>,
+      label: "Sign Out",
       key: "0",
     },
   ];
   const dispatch = useDispatch();
-  const isAuthenticated = useSelector(
-    (state) => state?.appDetails?.isAuthenticated
-  );
+  const { isAuthenticated, user } = useSelector((state) => state?.appDetails);
 
   const handleLogout = () => {
     dispatch(appActionCreators.appLogout());
@@ -50,7 +47,23 @@ const Login = ({ isButton = false }) => {
         overlayStyle={{ cursor: "pointer" }}
       >
         <div onClick={(e) => e.preventDefault()}>
-          <Avatar size="large" icon={<UserOutlined />} />
+          <div className="login-wrap">
+            {user?.name ? user.name : ""}
+            {user?.picture ? (
+              <img
+                className="user-img"
+                src={user.picture}
+                alt=""
+                onClick={() => handleLogout()}
+              />
+            ) : (
+              <Avatar
+                onClick={() => handleLogout()}
+                size="large"
+                icon={<UserOutlined />}
+              />
+            )}
+          </div>
         </div>
       </Dropdown>
     );

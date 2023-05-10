@@ -3,9 +3,9 @@ import { googleLogout } from "@react-oauth/google";
 
 import { appActions, appActionCreators } from "../../actions/appActions";
 
-function* appLogin() {
+function* appLogin({ payload }) {
   try {
-    yield put(appActionCreators.appLoginSuccess());
+    yield put(appActionCreators.appLoginSuccess(payload));
   } catch (error) {
     yield put(appActionCreators.appLoginError());
   }
