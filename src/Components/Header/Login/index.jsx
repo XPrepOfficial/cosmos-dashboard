@@ -1,8 +1,8 @@
 import { GoogleLogin } from "@react-oauth/google";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { DownOutlined } from "@ant-design/icons";
-import { Dropdown, Space } from "antd";
+import { UserOutlined } from "@ant-design/icons";
+import { Dropdown, Avatar } from "antd";
 import { appActionCreators } from "../../../actions/appActions";
 import "./Login.css";
 
@@ -49,12 +49,9 @@ const Login = ({ isButton = false }) => {
         trigger={["click"]}
         overlayStyle={{ cursor: "pointer" }}
       >
-        <a onClick={(e) => e.preventDefault()}>
-          <Space>
-            User
-            <DownOutlined />
-          </Space>
-        </a>
+        <div onClick={(e) => e.preventDefault()}>
+          <Avatar size="large" icon={<UserOutlined />} />
+        </div>
       </Dropdown>
     );
   }
