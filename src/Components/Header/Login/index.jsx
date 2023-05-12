@@ -64,7 +64,7 @@ const Login = ({ isButton = false }) => {
     <div className="login-container">
       <div className="login-left" />
       <div className="login-right">
-        <div className="text-24-light-blue">Login to Dashboard</div>
+        <div className="text-24">Login to Dashboard</div>
         <LoginJSX />
       </div>
     </div>
