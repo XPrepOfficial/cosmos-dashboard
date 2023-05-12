@@ -12,6 +12,9 @@
 }
 
 .login-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: var(--color-light-blue);
 }
 
