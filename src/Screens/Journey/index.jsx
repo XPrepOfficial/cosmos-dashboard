@@ -13,6 +13,7 @@ const Journey = () => {
   const searchObj = useRef({
     flag: true,
     searchValue: "",
+    timer: null,
   });
   const journeyDetails = useSelector((state) => state.journeyDetails);
 
@@ -45,10 +46,22 @@ const Journey = () => {
 
   const handleJourneyNameSearch = (e) => {
     searchObj.current.searchValue = e?.target?.value;
-    if (searchObj.current.flag) {
+    if (!searchObj.current.searchValue) {
+      if (searchObj.current.timer) {
+        clearTimeout(searchObj.current.timer);
+        searchObj.current.flag = true;
+      }
+      dispatch(
+        journeyActionCreators.getJourneyData({
+          limit: JourneyTableLimit,
+          offset: 0,
+          searchParam: searchObj.current.searchValue,
+        })
+      );
+    } else if (searchObj.current.flag) {
       searchObj.current.flag = false;
       dispatch(journeyActionCreators.setSearchLoading());
-      setTimeout(() => {
+      searchObj.current.timer = setTimeout(() => {
         searchObj.current.flag = true;
         defaultPage.current = 1;
         dispatch(
