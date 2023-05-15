@@ -1,0 +1,31 @@
+.login-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: calc(100vh - 64px);
+}
+
+.login-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.login-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--color-light-blue);
+}
+
+.login-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.user-img {
+  height: 45px;
+}

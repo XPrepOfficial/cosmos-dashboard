@@ -1,13 +1,67 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+  font-family: "Inter", sans-serif;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  margin: 0;
+}
+
+.text-12-grey {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  color: #94969e;
+}
+
+.text-14 {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  color: #1f1f21;
+}
+
+.text-18 {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  color: #1f1f21;
+}
+
+.text-24 {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  color: #1f1f21;
+}
+
+.text-24-light-blue {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  color: var(--color-light-blue);
+}
+
+.mr12 {
+  margin-right: 12px;
+}
+
+.mr10 {
+  margin-right: 10px;
+}
+
+.global-padding {
+  padding: 24px 24px 0px;
+  background: var(--color-light-grey);
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+:root {
+  --color-light-grey: #f6f8fa;
+  --color-white: #ffffff;
+  --color-blue: #2d81f7;
+  --color-light-blue: rgba(0, 173, 231);
 }

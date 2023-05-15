@@ -1,0 +1,15 @@
+.export-modal-container {
+    width: 520px;
+    height: 610px;
+}
+
+.export-modal-content {
+    height: 400px;
+}
+
+.export-modal-select {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 25px;
+}

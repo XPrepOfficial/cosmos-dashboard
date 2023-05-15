@@ -1,0 +1,14 @@
+# Ignore artifacts:
+build
+dist
+coverage
+
+# Ignore all HTML files:
+*.html
+
+package-lock.json
+/node_modules/*
+
+
+.gitignore
+.prettierignore
