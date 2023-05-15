@@ -5,6 +5,7 @@ import { appActions, appActionCreators } from "../../actions/appActions";
 
 function* appLogin({ payload }) {
   try {
+    localStorage.setItem("auth-token", true);
     yield put(appActionCreators.appLoginSuccess(payload));
   } catch (error) {
     yield put(appActionCreators.appLoginError());
@@ -14,6 +15,7 @@ function* appLogin({ payload }) {
 function* appLogout() {
   try {
     yield googleLogout();
+    localStorage.setItem("auth-token", false);
     yield put(appActionCreators.appLogoutSuccess());
   } catch (error) {
     yield put(appActionCreators.appLogoutError(error));
