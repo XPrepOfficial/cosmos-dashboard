@@ -36,7 +36,7 @@ export const GetDatesDaysAgo = (daysAgoVal) => {
   return [endDate, currentDate.toISOString().slice(0, 10)];
 };
 
-export const getUserDetailsFromJWT = (token) => {
+export const getUserDetailsFromJWT = (token = localStorage.getItem(token)) => {
   if (typeof token !== "string") {
     return {};
   }
