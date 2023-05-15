@@ -51,6 +51,7 @@ const Journey = () => {
         clearTimeout(searchObj.current.timer);
         searchObj.current.flag = true;
       }
+      dispatch(journeyActionCreators.setSearchLoading());
       dispatch(
         journeyActionCreators.getJourneyData({
           limit: JourneyTableLimit,
