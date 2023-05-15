@@ -11,7 +11,16 @@ function* fetchJourneyData({ payload }) {
   try {
     const response = yield call(
       API.get,
-      getURL("FETCH_JOURNEY", payload?.limit, payload.offset)
+      getURL(
+        `${
+          payload?.searchParam
+            ? "FETCH_JOURNEY_SEARCH_BY_NAME"
+            : "FETCH_JOURNEY"
+        }`,
+        payload?.limit,
+        payload?.offset,
+        payload?.searchParam
+      )
     );
     yield put(
       journeyActionCreators.getJourneyDataSuccess(response?.data?.data)

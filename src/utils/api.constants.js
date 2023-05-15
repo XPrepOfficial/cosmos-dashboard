@@ -1,6 +1,8 @@
 const urls = {
   EXPORT_REPORT: "analytics-api/v1/journey/reports",
   FETCH_JOURNEY: "analytics-api/v1/journey/list?limit={0}&offset={1}",
+  FETCH_JOURNEY_SEARCH_BY_NAME:
+    "analytics-api/v1/journey/list?limit={0}&offset={1}&search={2}",
   FETCH_JOURNEY_CARD_DATA:
     "analytics-api/v1/journey/stats?journeyId={0}&startDate={1}&endDate={2}",
   FETCH_CAMPAIGNS_TABLE_DATA:

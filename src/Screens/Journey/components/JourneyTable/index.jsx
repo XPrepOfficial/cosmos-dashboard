@@ -1,4 +1,4 @@
-import { Table, Tag } from "antd";
+import { Table, Tag, Input } from "antd";
 import { JourneyTableLimit, StatusColorMap } from "../../../../utils/helper";
 import "./JourneyTable.css";
 
@@ -6,7 +6,10 @@ const JourneysTable = ({
   journeyDetails,
   handleJourneyTablePageChange,
   navigateDashboard,
+  handleJourneyNameSearch,
+  defaultPage,
 }) => {
+  const { Search } = Input;
   const JourneysTableCols = [
     {
       title: "Journey Name",
@@ -60,20 +63,29 @@ const JourneysTable = ({
     },
   ];
   return (
-    <Table
-      loading={journeyDetails?.isLoading}
-      columns={JourneysTableCols}
-      dataSource={journeyDetails?.data?.journeyList}
-      pagination={{
-        total: journeyDetails?.data?.totalJourney,
-        position: ["bottomCenter"],
-        onChange: (pageNumber) => {
-          handleJourneyTablePageChange(pageNumber);
-        },
-        pageSize: JourneyTableLimit,
-        showTotal: (total) => `Total ${total} items`,
-      }}
-    />
+    <>
+      <Search
+        style={{ width: "25%", float: "right", marginBottom: "10px" }}
+        placeholder="Search by journey name"
+        onChange={handleJourneyNameSearch}
+        loading={journeyDetails?.searchLoading}
+      />
+      <Table
+        loading={journeyDetails?.isLoading}
+        columns={JourneysTableCols}
+        dataSource={journeyDetails?.data?.journeyList}
+        pagination={{
+          total: journeyDetails?.data?.totalJourney,
+          position: ["bottomCenter"],
+          onChange: (pageNumber) => {
+            handleJourneyTablePageChange(pageNumber);
+          },
+          pageSize: JourneyTableLimit,
+          showTotal: (total) => `Total ${total} items`,
+          current: defaultPage,
+        }}
+      />
+    </>
   );
 };
 export default JourneysTable;
