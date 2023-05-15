@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Tabs } from "antd";
@@ -9,6 +9,11 @@ import { JourneyTableLimit } from "../../utils/helper";
 const Journey = () => {
   const dispatch = useDispatch();
   let navigate = useNavigate();
+  const defaultPage = useRef(1);
+  const searchObj = useRef({
+    flag: true,
+    searchValue: "",
+  });
   const journeyDetails = useSelector((state) => state.journeyDetails);
 
   useEffect(() => {
@@ -16,6 +21,7 @@ const Journey = () => {
       journeyActionCreators.getJourneyData({
         limit: JourneyTableLimit,
         offset: 0,
+        searchParam: searchObj?.current?.searchValue,
       })
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -26,13 +32,34 @@ const Journey = () => {
   };
 
   const handleJourneyTablePageChange = (pageNumber) => {
+    defaultPage.current = pageNumber;
     let offset = (pageNumber - 1) * JourneyTableLimit;
     dispatch(
       journeyActionCreators.getJourneyData({
         limit: JourneyTableLimit,
         offset: offset,
+        searchParam: searchObj?.current?.searchValue,
       })
     );
+  };
+
+  const handleJourneyNameSearch = (e) => {
+    searchObj.current.searchValue = e?.target?.value;
+    if (searchObj.current.flag) {
+      searchObj.current.flag = false;
+      dispatch(journeyActionCreators.setSearchLoading());
+      setTimeout(() => {
+        searchObj.current.flag = true;
+        defaultPage.current = 1;
+        dispatch(
+          journeyActionCreators.getJourneyData({
+            limit: JourneyTableLimit,
+            offset: 0,
+            searchParam: searchObj.current.searchValue,
+          })
+        );
+      }, 3000);
+    }
   };
 
   return (
@@ -49,6 +76,8 @@ const Journey = () => {
                 handleJourneyTablePageChange={handleJourneyTablePageChange}
                 journeyDetails={journeyDetails}
                 navigateDashboard={navigateDashboard}
+                handleJourneyNameSearch={handleJourneyNameSearch}
+                defaultPage={defaultPage?.current}
               />
             ),
           },

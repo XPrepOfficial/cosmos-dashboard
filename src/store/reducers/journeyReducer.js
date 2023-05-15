@@ -6,6 +6,11 @@ export default {
     const { type, payload } = action;
 
     switch (type) {
+      case journeyActions.SET_SEARCH_LOADING:
+        return {
+          ...state,
+          searchLoading: true,
+        };
       case journeyActions.FETCH_JOURNEY_DATA:
         return {
           ...state,
@@ -14,6 +19,7 @@ export default {
       case journeyActions.FETCH_JOURNEY_DATA_SUCCESS:
         return {
           isLoading: false,
+          searchLoading: false,
           originalData: payload,
           data: payload,
           errorMessage: "",
@@ -22,6 +28,7 @@ export default {
         return {
           ...state,
           isLoading: false,
+          searchLoading: false,
           errorMessage: payload,
         };
       default:
