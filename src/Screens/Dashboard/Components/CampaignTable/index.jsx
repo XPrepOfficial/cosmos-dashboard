@@ -63,6 +63,7 @@ const CampaignTable = ({
       },
       pageSize: CampaignTableLimit,
       current: defaultPage,
+      showTotal: (total) => `Total ${total} items`,
     }}
     loading={campaignsTableData.isLoading}
   />

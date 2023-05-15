@@ -71,6 +71,7 @@ const JourneysTable = ({
           handleJourneyTablePageChange(pageNumber);
         },
         pageSize: JourneyTableLimit,
+        showTotal: (total) => `Total ${total} items`,
       }}
     />
   );
