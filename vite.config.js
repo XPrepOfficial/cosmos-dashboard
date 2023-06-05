@@ -7,9 +7,9 @@ import react from "@vitejs/plugin-react";
 // })
 
 import { defineConfig } from "vite";
-import reactRefresh from "@vitejs/plugin-react-refresh";
+// import reactRefresh from "@vitejs/plugin-react-refresh";
 export default defineConfig({
-  plugins: [reactRefresh(), react()],
+  plugins: [react()],
   build: {
     rollupOptions: {
       external: ["react", "react-dom"],
