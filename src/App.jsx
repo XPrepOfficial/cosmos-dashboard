@@ -1,11 +1,11 @@
-import { lazy, Suspense } from "react";
+import { Suspense } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 import { Spin } from "antd";
-import Protected from "./ProtectedRoute";
+// import Protected from "./ProtectedRoute";
 import Header from "./Components/Header";
 
-const Dashbaord = lazy(() => import("./screens/Dashboard"));
-const Journey = lazy(() => import("./screens/Journey"));
+// const Dashbaord = lazy(() => import("./screens/Dashboard"));
+// const Journey = lazy(() => import("./screens/Journey"));
 
 function App() {
   return (
@@ -22,7 +22,7 @@ function App() {
     >
       <Routes>
         <Route path="/" element={<Navigate to="/journey" />} />
-        <Route
+        {/* <Route
           path="/journey"
           element={
             <Protected>
@@ -37,7 +37,7 @@ function App() {
               <Dashbaord />
             </Protected>
           }
-        />
+        /> */}
         <Route path="*" element={<Navigate to="/journey" />} />
       </Routes>
     </Suspense>
