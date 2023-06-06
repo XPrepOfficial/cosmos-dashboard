@@ -5,8 +5,8 @@ NVM_DIR="/data-new/nvm"
 source /data-new/nvm/nvm.sh
 
 # Application works with Node v14 for now
-nvm install 14
-nvm use 14
+nvm install 18
+nvm use 18
 npm install --omit=dev --legacy-peer-deps
 
 # Delete old build
