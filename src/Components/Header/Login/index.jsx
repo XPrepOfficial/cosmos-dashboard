@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { UserOutlined } from "@ant-design/icons";
 import { Dropdown, Avatar } from "antd";
 import { appActionCreators } from "../../../actions/appActions";
-import ClassPlusLogo from "../../../assets/ClassPlusLogo.svg";
+// import ClassPlusLogo from "../../../assets/ClassPlusLogo.svg";
 import "./Login.css";
 
 const LoginJSX = () => {
@@ -64,7 +64,7 @@ const Login = ({ isButton = false }) => {
   return (
     <div className="login-container">
       <div className="login-left">
-        <img src={ClassPlusLogo} alt="" />
+        {/* <img src={ClassPlusLogo} alt="" /> */}
       </div>
       <div className="login-right">
         <div className="text-24">Login to Dashboard</div>
