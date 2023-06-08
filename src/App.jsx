@@ -4,8 +4,8 @@ import { Spin } from "antd";
 import Protected from "./ProtectedRoute";
 import Header from "./Components/Header";
 
-const Dashbaord = lazy(() => import("./screens/Dashboard"));
-const Journey = lazy(() => import("./screens/Journey"));
+const Dashbaord = lazy(() => import("./screens/Dashboard/index.jsx"));
+const Journey = lazy(() => import("./screens/Journey/index.jsx"));
 
 function App() {
   return (
