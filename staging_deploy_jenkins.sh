@@ -7,7 +7,7 @@ source /data-new/nvm/nvm.sh
 # Application works with Node v14 for now
 nvm install 14
 nvm use 14
-npm install --production --legacy-peer-deps
+npm install --omit=dev --legacy-peer-deps
 
 # Delete old build
 rm -rf build
