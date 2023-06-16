@@ -3,8 +3,7 @@ import "./styles.css";
 import { Layout, Menu } from "antd";
 import { TeamOutlined, StarOutlined } from "@ant-design/icons";
 import WhiteLogo from "../../assets/whiteLogo.svg";
-import ReactEcharts from "echarts-for-react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { userActionCreators } from "../../actions/userActions";
 import { useNavigate } from "react-router-dom";
 import Header from "../Header";
@@ -18,7 +17,7 @@ const items = [
   label: data.label,
   path: data.path,
 }));
-const { Content, Footer, Sider } = Layout;
+const { Sider } = Layout;
 
 const LayoutContainer = (props) => {
   const dispatch = useDispatch();
@@ -51,7 +50,7 @@ const LayoutContainer = (props) => {
           mode="inline"
           defaultSelectedKeys={["1"]}
           items={items}
-          onClick={({ item, key, keyPath, domEvent }) => {
+          onClick={({ key }) => {
             navigate(`/${items[+key - 1]?.path}`);
             setHeaderText(items[+key - 1]?.label);
           }}

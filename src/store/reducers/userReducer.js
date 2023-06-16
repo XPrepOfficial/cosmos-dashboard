@@ -4,13 +4,6 @@ import initUserState from "../initialState/initUserState.js";
 export default {
   userDetails: (state = initUserState.userDetails, action) => {
     const { type, payload } = action;
-    const graphDataParser = (data) => {
-      let xAxis = [];
-      let overall = [];
-      let web = [];
-      let android = [];
-      let ios = [];
-    };
     switch (type) {
       case userActions.SET_LOADING:
         return {

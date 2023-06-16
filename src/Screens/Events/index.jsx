@@ -1,22 +1,14 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./styles.css";
-import { Layout, Menu, theme, Card, Select, Tooltip } from "antd";
-import {
-  AppstoreOutlined,
-  BarChartOutlined,
-  CloudOutlined,
-  ShopOutlined,
-  TeamOutlined,
-  StarOutlined,
-  InfoCircleOutlined,
-} from "@ant-design/icons";
+import { Layout, Card, Select, Tooltip } from "antd";
+import { InfoCircleOutlined } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { userActionCreators } from "../../actions/userActions";
 import ReactEcharts from "echarts-for-react";
 
-const { Content, Footer, Sider } = Layout;
+const { Content } = Layout;
 
-const Events = (props) => {
+const Events = () => {
   const dispatch = useDispatch();
   const { graphCardData } = useSelector((state) => state.userDetails);
   const [graphActivityType, setGraphActivityType] = useState("MAU");

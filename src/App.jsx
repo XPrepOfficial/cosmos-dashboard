@@ -1,9 +1,8 @@
 import { lazy, Suspense } from "react";
-import { Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { Spin } from "antd";
 import Protected from "./ProtectedRoute";
 import Header from "./Components/Header";
-import LayoutContainer from "./Components/LayoutContainer";
 import Users from "./Screens/Users";
 import Events from "./Screens/Events";
 

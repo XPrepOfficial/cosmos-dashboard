@@ -9,9 +9,9 @@ export const userActions = {
 };
 
 export const userActionCreators = {
-  setLoading: () => ({
-    type: selectOrgActions.SET_LOADING,
-  }),
+  // setLoading: () => ({
+  //   type: selectOrgActions.SET_LOADING,
+  // }),
   fetchGraphCardsData: () => ({
     type: userActions.FETCH_GRAPH_CARDS_DATA,
   }),

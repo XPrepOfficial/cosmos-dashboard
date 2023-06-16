@@ -1,11 +1,6 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 import API from "../../utils/axios";
 import getURL from "../../utils/api.constants";
-
-import {
-  selectOrgActions,
-  selectOrgActionCreators,
-} from "../../actions/selectOrgActions";
 import { userActions, userActionCreators } from "../../actions/userActions";
 
 function* fetchGraphData({ payload }) {
