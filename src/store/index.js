@@ -21,6 +21,9 @@ import selectOrgSaga from "./sagas/selectOrgSaga";
 import initExportReportState from "./initialState/initExportReportState";
 import exportReportReducer from "./reducers/exportReportReducer";
 import exportReportSaga from "./sagas/exportReportSaga";
+import initUserState from "./initialState/initUserState";
+import userReducer from "./reducers/userReducer";
+import userSaga from "./sagas/userSaga";
 
 const initialState = {
   ...initAppState,
@@ -28,6 +31,7 @@ const initialState = {
   ...initDashboardState,
   ...initSelectOrgState,
   ...initExportReportState,
+  ...initUserState,
 };
 
 const reducers = {
@@ -36,6 +40,7 @@ const reducers = {
   ...dashboardReducer,
   ...selectOrgReducer,
   ...exportReportReducer,
+  ...userReducer,
 };
 
 function* rootSaga() {
@@ -45,6 +50,7 @@ function* rootSaga() {
     ...dashboardSaga,
     ...selectOrgSaga,
     ...exportReportSaga,
+    ...userSaga,
   ]);
 }
 

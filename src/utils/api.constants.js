@@ -11,6 +11,9 @@ const urls = {
     "analytics-api/v1/journey/orgs?journeyId={0}&limit={1}&offset={2}",
   SELECT_SEARCH_ORGS_LIST:
     "analytics-api/v1/journey/orgs?journeyId={0}&limit={1}&offset={2}&search={3}",
+  FETCH_GRAPH_DATA:
+    "analytics-api/v1/active-users/stats?type={0}&startDate={1}&endDate={2}",
+  FETCH_GRAPH_CARD_DATA: "analytics-api/v1/data/overview",
 };
 
 export default (type, ...params) => {

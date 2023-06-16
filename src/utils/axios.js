@@ -3,15 +3,15 @@ import Axios from "axios";
 const URL_OBJECT = () => {
   switch (import.meta.env.VITE_APP_ENV) {
     case "development":
-      return "https://apip-gcp.classplusapp.com";
+      return "https://apip-qa.classplusapp.com";
     case "staging":
-      return "https://apip-gcp.classplusapp.com";
+      return "https://apip-qa.classplusapp.com";
     case "preprod":
-      return "https://apip-gcp.classplusapp.com";
+      return "https://apip-qa.classplusapp.com";
     case "production":
-      return "https://apip-gcp.classplusapp.com";
+      return "https://apip-qa.classplusapp.com";
     default:
-      return "https://apip-gcp.classplusapp.com";
+      return "https://apip-qa.classplusapp.com";
   }
 };
 
@@ -30,7 +30,7 @@ API.interceptors.request.use(
     const token = getAccessToken();
     configCopy.headers["x-access-token"] =
       token ||
-      "eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJpZCI6NTI0MjUxMDQsIm9yZ0lkIjoxNzAsInR5cGUiOjEsIm1vYmlsZSI6IjkxNzYwNzk4NDQ0NCIsIm5hbWUiOiJIYXIiLCJlbWFpbCI6bnVsbCwiaXNJbnRlcm5hdGlvbmFsIjowLCJkZWZhdWx0TGFuZ3VhZ2UiOiJFTiIsImNvdW50cnlDb2RlIjoiSU4iLCJjb3VudHJ5SVNPIjoiOTEiLCJ0aW1lem9uZSI6IkdNVCs1OjMwIiwiaXNEaXkiOmZhbHNlLCJmaW5nZXJwcmludElkIjoiYTgxYjYxODI2OTg3N2NjYTA5MjcyZjVmMDkzNTE3NDgiLCJpYXQiOjE2ODM4ODI0MTksImV4cCI6MTY4NDQ4NzIxOX0.QW75Xr5obBt0x-_IthbiVkvRW6kS1gGOml0pjbV-PdSdWiMMAsUsW9nI6LvZfGd7";
+      "eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJpZCI6MzA4NDkxMzksIm9yZ0lkIjoxNzAsInR5cGUiOjMsIm1vYmlsZSI6IjkxNzY5NjM4MDgwMCIsIm5hbWUiOiJTb25pa2EgS3VtYXJpIiwiZW1haWwiOiJhYmhpMTIzNEB5b3Bpb21haWwuY29tIiwiaXNJbnRlcm5hdGlvbmFsIjowLCJkZWZhdWx0TGFuZ3VhZ2UiOiJFTiIsImNvdW50cnlDb2RlIjoiSU4iLCJjb3VudHJ5SVNPIjoiOTEiLCJ0aW1lem9uZSI6IkdNVCs1OjMwIiwiaXNEaXkiOmZhbHNlLCJmaW5nZXJwcmludElkIjoiYTgxYjYxODI2OTg3N2NjYTA5MjcyZjVmMDkzNTE3NDgiLCJpYXQiOjE2ODY2NDI3MzEsImV4cCI6MTY4NzI0NzUzMX0.EKd_kTgAoZ6aW4QOeBpilLx8oLYciszjHtcX8gvv1x8JP5EcZXQhvrT6I_5LSwne";
     return configCopy;
   },
   (error) => Promise.reject(error)

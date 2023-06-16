@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import Header from "../Components/Header";
 import Login from "../Components/Header/Login";
+import LayoutContainer from "../Components/LayoutContainer";
 
 const Protected = ({ children }) => {
   const isAuthenticated = useSelector(
@@ -16,8 +17,8 @@ const Protected = ({ children }) => {
   }
   return (
     <>
-      <Header />
-      {children}
+      {/* <Header style={{ marginLeft: 200 }} /> */}
+      <LayoutContainer>{children}</LayoutContainer>
     </>
   );
 };

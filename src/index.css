@@ -5,8 +5,14 @@
 
 body {
   margin: 0;
+  height: 100%;
 }
-
+html {
+  height: 100%;
+}
+#root {
+  height: 100%;
+}
 .text-12-grey {
   font-style: normal;
   font-weight: 500;
